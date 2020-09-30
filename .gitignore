@@ -1,4 +1,7 @@
 .DS_Store
 __pycache__/*
+*/__pycache__/*
 venvs/*
+venvs_py3.7/*
 .idea/*
+
