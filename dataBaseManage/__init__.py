@@ -7,12 +7,26 @@ import sqlite3
 from dataClass import Incident
 
 
-def FindData(keyword:str, IncidentType:str) -> [Incident]:
+def accessDatabase(sqlStatement:str):
     # connect to database
     conn = sqlite3.connect('TrafficDataBase.db')
     print ("Opened database successfully")
     cursor = conn.cursor()
 
+    # execute sql statement and output data
+    gripData = cursor.execute(sqlStatement)
+    result = []
+    for i in gripData:
+        result.append(i)
+
+    # close connecting
+    cursor.close()
+    conn.commit()
+    conn.close()
+
+    return result
+
+def FindData_from_Incidents(keyword:str, IncidentType:str) -> [Incident]:
     # make sql statement
     sqlStatement = "select * from Incidents where "
     if keyword != '':
@@ -24,10 +38,10 @@ def FindData(keyword:str, IncidentType:str) -> [Incident]:
     print(sqlStatement)
 
     # execute sql statement
-    gripData = cursor.execute(sqlStatement)
+    gripData = accessDatabase(sqlStatement)
 
     # output data
-    result = [Incident]
+    result = []
     for i in gripData:
         result.append(Incident(id=i[0],
                                groupName=i[1],
@@ -36,13 +50,9 @@ def FindData(keyword:str, IncidentType:str) -> [Incident]:
                                status=i[4],
                                updateTime=i[5]))
 
-    # close connecting
-    cursor.close()
-    conn.commit()
-    conn.close()
     return result
 
+def FindData_from():
+    return 1
 
-res = FindData('高速', '')
-print(res[1].updateTime)
 
