@@ -27,10 +27,6 @@ def rescue():
     return 'Hello World!'
 
 
-accident_index = np.array([21, 10, 17])  # 事故点的位置
-a, b = get_input(accident_index)
-print(np.array(a))
-print(b)
 
 if __name__ == '__app__':
     app.run()

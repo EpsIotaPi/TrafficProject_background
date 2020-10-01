@@ -20,26 +20,37 @@ def transportation_problem(costs, x_max, y_max):
     prob.solve()
     return {'objective':pulp.value(prob.objective), 'var': [[pulp.value(var[i][j]) for j in range(col)] for i in range(row)]}
 
-def get_input(accident_index):
+def get_input(accident_index) -> [np.ndarray]:
     """
     Calculate the vehicles to be dispatched to the accident point
 
     :param accident_index: np.array([1, 2, 3])
-    :return: a martix will indicate from Rescue point to accident point
+    :returns: [car_nums, route, distance, times]
+    :rtype: [np.ndarray, np.ndarray, np.ndarray, np.ndarray]
     """
-    accident_index=accident_index-1
+    accident_index = accident_index - 1
 
     sheet1 = pd.read_excel('./rescueDeployment/result.xls', sheet_name='sheet1', header=None)
     goal_value_matrix = sheet1.values
 
-    #返回路径？
+    #路径矩阵
     sheet2 = pd.read_excel('./rescueDeployment/result.xls', sheet_name='sheet2', header=None)
     route_matrix = sheet2.values
 
+    # 距离矩阵
+    sheet3 = pd.read_excel('./rescueDeployment/result.xls', sheet_name='sheet3', header=None)
+    distance_matrix = sheet3.values
+
+    # 时间矩阵
+    sheet4 = pd.read_excel('./rescueDeployment/result.xls', sheet_name='sheet4', header=None)
+    time_matrix = sheet4.values
+
     arr= np.zeros(6)   #救援点的个数固定为6
-    goal_funtion_matrix=goal_value_matrix[:,accident_index]
-    route_matrix=route_matrix[:,accident_index]
-    costs=np.column_stack((np.array(1/np.array(goal_funtion_matrix)),arr))
+    goal_funtion_matrix = goal_value_matrix[:,accident_index]
+    route_matrix = route_matrix[:,accident_index]
+    distance_matrix = distance_matrix[:,accident_index]
+    time_matrix = time_matrix[:,accident_index]
+    costs = np.column_stack((np.array(1/np.array(goal_funtion_matrix)),arr))
 
     max_plant = [2, 3, 1, 2, 1, 2]  # 救援点对应存储的车辆数
     max_cultivation = []  # 事故点对应的需求数
@@ -50,10 +61,7 @@ def get_input(accident_index):
         count=count+1
     max_cultivation.append(sum(max_plant)-sum(max_cultivation))
     res = transportation_problem(costs, max_plant, max_cultivation)
-    return res['var'],route_matrix
-    # print(f'最大值为{res["objective"]}')
-    # print('各变量的取值为：')
-    # pprint(res['var'])
+    return np.array(res['var']), route_matrix, distance_matrix, time_matrix
 
 
 
@@ -63,8 +71,11 @@ if __name__ == '__main__':
     #救援点的位置为[19,29,34,15,45,33]
     #救援点对应的存储车辆数目为[2, 3, 1, 2, 1, 2]
     # 事故点不能超过3个,事故点的需求车辆默认为从2开始，步长为1，递增
-    accident_index = np.array([21, 10, 17])#事故点的位置
-    a, b = get_input(accident_index)
-    print(np.array(a))
-    print(b)
+
+    accident_index = np.array([21, 10, 17])  # 事故点的位置
+    car_nums, route, distance, times = get_input(accident_index)
+    print(car_nums)
+    print(route)
+    print(distance)
+    print(times)
 
