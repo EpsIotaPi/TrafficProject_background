@@ -21,6 +21,12 @@ def transportation_problem(costs, x_max, y_max):
     return {'objective':pulp.value(prob.objective), 'var': [[pulp.value(var[i][j]) for j in range(col)] for i in range(row)]}
 
 def get_input(accident_index):
+    """
+    Calculate the vehicles to be dispatched to the accident point
+
+    :param accident_index: np.array([1, 2, 3])
+    :return: a martix will indicate from Rescue point to accident point
+    """
     accident_index=accident_index-1
 
     sheet1 = pd.read_excel('./rescueDeployment/result.xls', sheet_name='sheet1', header=None)
