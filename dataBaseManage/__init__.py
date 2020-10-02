@@ -4,7 +4,6 @@ dir_mytest = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, dir_mytest)
 
 import sqlite3
-from dataClass import *
 
 
 def accessDatabase(sqlStatement:str):

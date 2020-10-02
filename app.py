@@ -2,6 +2,7 @@
 from flask import Flask, request, jsonify
 
 from dataBaseManage.ChatMonitor import *
+from dataBaseManage.RescuePoints import *
 from dataBaseManage.Incidents import *
 from rescueDeployment.transportation import get_input
 
@@ -50,7 +51,41 @@ def groups():
 # 救援点配置——RescuePoints
 @app.route('/rescue_config')
 def rescue_config():
-    return 'Hello World!'
+    keyword = request.args.get("keyword")
+    pageNum = request.args.get("page_num")
+    if keyword == None:
+        keyword = ''
+
+    rescuePoints = FindData_from_RescuePoints(keyword)
+
+    rp_Array = []
+    for i in rescuePoints:
+        dict = {
+            'rp_name': i.name,
+            'rp_property':{
+                'TrafficPolice': i.property.TrafficPolice,
+                'RoadAdministration': i.property.RoadAdministration,
+                'small_ObstacleRemoval': i.property.small_ObstacleRemoval,
+                'large_ObstacleRemoval': i.property.large_ObstacleRemoval,
+                'Crane': i.property.Crane,
+                'BackTruck': i.property.BackTruck,
+                'PickupTruck': i.property.PickupTruck,
+                'FireEngine': i.property.FireEngine,
+                'Ambulance': i.property.Ambulance
+            }
+        }
+        rp_Array.append(dict)
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'rp_num': len(rp_Array),
+            'rescuePoint': rp_Array
+        }
+    }
+
+    return jsonify(outputData)
 
 
 # 事件分析——Incidents
@@ -79,7 +114,7 @@ def events():
         incidentArray.append(dict)
 
     outputData = {
-        'code': 0,
+        'code': 1,
         'message': '调用成功',
         'data': incidentArray
     }
