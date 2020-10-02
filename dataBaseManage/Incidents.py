@@ -13,7 +13,9 @@ class Incident:
 
 def FindData_from_Incidents(keyword:str, IncidentType:str) -> [Incident]:
     # make sql statement
-    sqlStatement = "select * from Incidents where "
+    sqlStatement = "select * from Incidents"
+    if keyword != '' or IncidentType != '':
+        sqlStatement += ' where '
     if keyword != '':
         sqlStatement += "Content Like \'%" + keyword + "%\'"
         if IncidentType != '':

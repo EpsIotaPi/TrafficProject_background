@@ -34,9 +34,9 @@ class rescuePoint(Point):
 
 def FindData_from_RescuePoints(keyword:str) -> [rescuePoint]:
     # make sql statement
-    sqlStatement = "select * from RescuePoints where "
+    sqlStatement = "select * from RescuePoints"
     if keyword != '':
-        sqlStatement += "rp_name Like \'%" + keyword + "%\'"
+        sqlStatement += " where rp_name Like \'%" + keyword + "%\'"
 
     print(sqlStatement)
 
