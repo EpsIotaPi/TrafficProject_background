@@ -18,3 +18,9 @@ conda create -n py3.7_traffic python=3.7
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install Flask PuLP-py3 pandas xlrd
 ```
+
+TODO:
+* [ ] fix time problem in groupChat page
+* [ ] make code and message when it wrong
+* [ ] make map page and consider it's funcation
+* [ ] 
