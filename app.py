@@ -59,8 +59,9 @@ def groups():
         'message': '调用成功',
         'data': {
             'group_num': len(allGroup),
+            # TODO: fix time problem
             'time': 87,
-            'events_num': 3000,
+            'events_num': len(FindData_from_Incidents("", "")),
             'group_info': groupArray
         }
     }
