@@ -18,8 +18,3 @@ conda create -n py3.7_traffic python=3.7
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install Flask PuLP-py3 pandas xlrd
 ```
-
-- [x] 最快 `isFast` 路径
-- [ ] 事故状态随机生成
-- [ ] 群聊名称随机生成
-- [ ] 更新时间随机生成（`numpy`）
