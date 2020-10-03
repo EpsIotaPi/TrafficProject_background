@@ -15,7 +15,9 @@ class Group:
 
 def FindData_from_ChatMonitor(keyword:str, status:str) -> [Group]:
     # make sql statement
-    sqlStatement = "select * from ChatMonitor where "
+    sqlStatement = "select * from ChatMonitor"
+    if keyword != '' or status != '':
+        sqlStatement += ' where '
     if keyword != '':
         sqlStatement += "group_Name Like \'%" + keyword + "%\'"
         if status != '':

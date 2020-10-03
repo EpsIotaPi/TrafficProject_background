@@ -1,12 +1,9 @@
 
 from dataBaseManage import accessDatabase
+from dataBaseManage import coordinate, Point
+
 
 #
-class coordinate:
-    def __init__(self, longitude:float, latitude:float):
-        self.longitude = longitude
-        self.latitude = latitude
-
 class Property:
     def __init__(self, TrafficPolice:int, RoadAdministration: int, small_ObstacleRemoval: int, large_ObstacleRemoval: int, Crane: int, BackTruck: int, PickupTruck: int, FireEngine: int, Ambulance: int):
         self.TrafficPolice = TrafficPolice
@@ -19,11 +16,6 @@ class Property:
         self.FireEngine = FireEngine
         self.Ambulance = Ambulance
 
-class Point:
-    def __init__(self, id: int, name:str, long: float, lati:float):
-        self.id = id
-        self.name = name
-        self.position = coordinate(long, lati)
 
 class rescuePoint(Point):
     def __init__(self, id: int, name:str, long: float, lati:float, property:Property):
@@ -34,9 +26,9 @@ class rescuePoint(Point):
 
 def FindData_from_RescuePoints(keyword:str) -> [rescuePoint]:
     # make sql statement
-    sqlStatement = "select * from RescuePoints where "
+    sqlStatement = "select * from RescuePoints"
     if keyword != '':
-        sqlStatement += "rp_name Like \'%" + keyword + "%\'"
+        sqlStatement += " where rp_name Like \'%" + keyword + "%\'"
 
     print(sqlStatement)
 
