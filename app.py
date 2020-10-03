@@ -1,9 +1,12 @@
 
 from flask import Flask, request, jsonify
+import json
 
+import dataBaseManage
 from dataBaseManage.ChatMonitor import *
 from dataBaseManage.RescuePoints import *
 from dataBaseManage.Incidents import *
+from dataBaseManage.RescuePlan import *
 from rescueDeployment.transportation import get_input
 
 # ---------------------------------------------------
@@ -107,7 +110,7 @@ def rescue_config():
 
 
 # 事件分析——Incidents
-@app.route('/events', methods=["GET", "POST"])
+@app.route('/events')
 def events():
     pageNum =  request.args.get("page_num")
     keyword = request.args.get("keyword")
@@ -128,9 +131,16 @@ def events():
             'content': i.content,
             'type': i.type,
             'status': i.status,
-            'updateTime': i.updateTime
-            # TODO:add entity_info
-            # 'entity_info':
+            'updateTime': i.updateTime,
+            'entity_info':{
+                'time': i.time,
+                'highway_name': i.highway_name,
+                'highway_numbre': i.highway_number,
+                'road_section': i.roadsection,
+                'direction': i.direction,
+                'distance': i.distance,
+                'p_id':i.position
+            }
         }
         if pageManage(pageNum=int(pageNum), index=index, info_count=5):
             incidentArray.append(dict)
@@ -150,11 +160,48 @@ def map():
 
 
 # 事故救援
-@app.route('/rescue')
+@app.route('/rescue', methods=["GET", "POST"])
 def rescue():
-    return 'Hello World!'
+    p_id = json.loads(request.get_data(as_text=True))
+
+    Plans = make_rescuePlan(np.array(p_id))
+
+    incidentArray = []
+    for i in Plans:
+        routeArray = []
+        for p in i.route.points:
+            point = {
+                'point_id': p.id,
+                'point_name': p.name,
+                'coordinate': {
+                    'long':p.position.longitude,
+                    'lati':p.position.latitude
+                }
+            }
+            routeArray.append(point)
+        dict = {
+            'begin': i.route.begin.id,
+            'end': i.route.end.id,
+            'time': i.time,
+            'distance': i.distance,
+            'vehicle_count': i.vehicle_count,
+            'route': routeArray
+        }
+        incidentArray.append(dict)
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'incident': incidentArray
+        }
+    }
+
+    print(outputData)
+    return jsonify(outputData)
 
 
 
-if __name__ == '__app__':
+if __name__ == '__main__':
+
     app.run()

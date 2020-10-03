@@ -66,16 +66,14 @@ def get_input(accident_index) -> [np.ndarray]:
 
 
 
-if __name__ == '__main__':
+# if __name__ == '__transportation__':
     #result.xls中，sheet1存储目标函数值，sheet2存储路径，sheet3存储对应的行程距离(km)，sheet4存储对应的时间(h)
     #救援点的位置为[19,29,34,15,45,33]
     #救援点对应的存储车辆数目为[2, 3, 1, 2, 1, 2]
     # 事故点不能超过3个,事故点的需求车辆默认为从2开始，步长为1，递增
 
-    accident_index = np.array([21, 10, 17])  # 事故点的位置
-    car_nums, route, distance, times = get_input(accident_index)
-    print(car_nums)
-    print(route)
-    print(distance)
-    print(times)
+# accident_index = np.array([21, 10, 17])  # 事故点的位置
+# car_nums, route, distance, times = get_input(accident_index)
+# text = route[1][1]
+# print(departRoute(text))
 
