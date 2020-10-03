@@ -159,7 +159,7 @@ def map():
     return 'Hello World!'
 
 
-# 事故救援
+# 事故救援——Points
 @app.route('/rescue', methods=["GET", "POST"])
 def rescue():
     p_id = json.loads(request.get_data(as_text=True))
@@ -185,7 +185,8 @@ def rescue():
             'time': i.time,
             'distance': i.distance,
             'vehicle_count': i.vehicle_count,
-            'route': routeArray
+            'route': routeArray,
+            'isFast': i.isFast
         }
         incidentArray.append(dict)
 
