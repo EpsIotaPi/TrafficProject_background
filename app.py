@@ -2,12 +2,12 @@
 from flask import Flask, request, jsonify
 import json
 
-import dataBaseManage
+
 from dataBaseManage.ChatMonitor import *
 from dataBaseManage.RescuePoints import *
 from dataBaseManage.Incidents import *
+from dataBaseManage.Map import *
 from dataBaseManage.RescuePlan import *
-from rescueDeployment.transportation import get_input
 
 # ---------------------------------------------------
 app = Flask(__name__)
@@ -54,14 +54,20 @@ def groups():
 
     allGroup = FindData_from_ChatMonitor(keyword='', status='')
 
+    allEntity = 0
+    allGroupNum = 0
+    for i in allGroup:
+        allGroupNum += 1
+        allEntity += i.entity_num
+
     outputData = {
-        'code': 0,
+        'code': 1,
         'message': '调用成功',
         'data': {
-            'group_num': len(allGroup),
+            'group_num': allGroupNum,
             # TODO: fix time problem
             'time': 87,
-            'events_num': len(FindData_from_Incidents("", "")),
+            'events_num': allEntity,
             'group_info': groupArray
         }
     }
@@ -130,7 +136,7 @@ def events():
         dict = {
             'name': i.groupName,
             'content': i.content,
-            'type': i.type,
+            'type': i.type,             # 四种类型：「占用车道」「分流限流」「借道通行」「其它」
             'status': i.status,
             'updateTime': i.updateTime,
             'entity_info':{
@@ -157,7 +163,30 @@ def events():
 # 实时地图
 @app.route('/map')
 def map():
-    return 'Hello World!'
+    num = int(request.args.get('need_num'))
+    choosePoints = selectRandomAccidentPoints(num)
+    accidentPointsArray = []
+    for i in choosePoints:
+        dict = {
+            "name": i.name,
+            "incident_num": countIncidents(i),
+            "coordinate": {
+                "long": i.position.longitude,
+                "lati": i.position.latitude
+            }
+        }
+        accidentPointsArray.append(dict)
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'accidentPoints': accidentPointsArray
+        }
+    }
+
+    print(outputData)
+    return jsonify(outputData)
 
 
 # 事故救援——Points

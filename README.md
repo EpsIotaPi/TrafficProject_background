@@ -22,5 +22,4 @@ pip install Flask PuLP-py3 pandas xlrd
 TODO:
 * [ ] fix time problem in groupChat page
 * [ ] make code and message when it wrong
-* [ ] make map page and consider it's funcation
-* [ ] 
+* [x] make map page and consider it's funcation
