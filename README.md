@@ -19,7 +19,14 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 pip install Flask PuLP-py3 pandas xlrd
 ```
 
-TODO:
-* [ ] fix time problem in groupChat page
-* [ ] make code and message when it wrong
-* [x] make map page and consider it's funcation
+##### PS:
+* home page's Time is Cal by now to last Monday's 8 o'clock
+* we have four incident type:
+    * 「占用车道」「分流限流」「借道通行」「其它」
+* the incident_status is generate follow by: 
+    * 45% 「进行中」
+    * 30% 「已完成」
+    * 20% 「等待中」
+    * 5%  「异常」
+* We follow the principle of rounding down when dealing with float
+* the output data is always with 「调用成功」 message

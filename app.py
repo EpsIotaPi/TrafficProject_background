@@ -1,6 +1,6 @@
 
 from flask import Flask, request, jsonify
-import json
+import json, datetime, time
 
 
 from dataBaseManage.ChatMonitor import *
@@ -19,7 +19,22 @@ def pageManage(pageNum: int, index:int, info_count:int) -> bool:
     if index >= start and index <= end:
         return True
     return False
+def calTimes():
+    nowTime = time.localtime()
+    transDay = nowTime.tm_wday
+    if transDay == 0 and nowTime.tm_hour < 8:
+        transDay = 7
+    transHour = nowTime.tm_hour - 8
+    transMin = nowTime.tm_min
+    transSec = nowTime.tm_sec
 
+    nowTime = datetime.datetime.now()
+    startDay = nowTime - datetime.timedelta(days=transDay,
+                                            hours=transHour,
+                                            minutes=transMin,
+                                            seconds=transSec)
+    transTime = int((nowTime - startDay).total_seconds() / 60)
+    return transTime
 
 # ---------------------------------------------------
 
@@ -46,7 +61,7 @@ def groups():
             'owner': i.owner,
             'time': i.time,
             'status': i.status,
-            'rate': int(i.entity_num / i.chat_num * 100)      #向下取整，可改进
+            'rate': int(i.entity_num / i.chat_num * 100)
         }
         if pageManage(pageNum=int(pageNum), index=index,info_count=5):
             groupArray.append(dict)
@@ -65,8 +80,7 @@ def groups():
         'message': '调用成功',
         'data': {
             'group_num': allGroupNum,
-            # TODO: fix time problem
-            'time': 87,
+            'time': calTimes(),
             'events_num': allEntity,
             'group_info': groupArray
         }
@@ -136,7 +150,7 @@ def events():
         dict = {
             'name': i.groupName,
             'content': i.content,
-            'type': i.type,             # 四种类型：「占用车道」「分流限流」「借道通行」「其它」
+            'type': i.type,
             'status': i.status,
             'updateTime': i.updateTime,
             'entity_info':{
