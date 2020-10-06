@@ -1,5 +1,6 @@
 
 from flask import Flask, request, jsonify
+from flask_cors import *
 import json, datetime, time
 
 
@@ -11,6 +12,7 @@ from dataBaseManage.RescuePlan import *
 
 # ---------------------------------------------------
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 # ---------------------------------------------------
 def pageManage(pageNum: int, index:int, info_count:int) -> bool:
@@ -19,6 +21,7 @@ def pageManage(pageNum: int, index:int, info_count:int) -> bool:
     if index >= start and index <= end:
         return True
     return False
+
 def calTimes():
     nowTime = time.localtime()
     transDay = nowTime.tm_wday
@@ -42,7 +45,7 @@ def calTimes():
 # 群聊管理——ChatMonitor
 @app.route('/groups')
 def groups():
-    pageNum = request.args.get('page_num')
+    pageNum = request.args.get('page_number')
     keyword = request.args.get("keyword")
     status = request.args.get("status")
     if keyword == None:
@@ -63,7 +66,7 @@ def groups():
             'status': i.status,
             'rate': int(i.entity_num / i.chat_num * 100)
         }
-        if pageManage(pageNum=int(pageNum), index=index,info_count=5):
+        if pageManage(pageNum=int(pageNum), index=index,info_count=10):
             groupArray.append(dict)
         index += 1
 
@@ -115,7 +118,7 @@ def rescue_config():
                 'Ambulance': i.property.Ambulance
             }
         }
-        if pageManage(pageNum=int(pageNum), index=index, info_count=9):
+        if pageManage(pageNum=int(pageNum), index=index, info_count=10):
             rp_Array.append(dict)
 
     outputData = {
@@ -163,7 +166,7 @@ def events():
                 'p_id':i.position
             }
         }
-        if pageManage(pageNum=int(pageNum), index=index, info_count=5):
+        if pageManage(pageNum=int(pageNum), index=index, info_count=10):
             incidentArray.append(dict)
 
     outputData = {
@@ -199,7 +202,6 @@ def map():
         }
     }
 
-    print(outputData)
     return jsonify(outputData)
 
 
@@ -242,7 +244,6 @@ def rescue():
         }
     }
 
-    print(outputData)
     return jsonify(outputData)
 
 
