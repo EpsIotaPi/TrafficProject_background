@@ -22,7 +22,7 @@ pip install Flask PuLP-py3 pandas xlrd
 ##### PS:
 * home page's Time is Cal by now to last Monday's 8 o'clock
 * we have four incident type:
-    * 「占用车道」「分流限流」「借道通行」「其它」
+    * 「占用车道」「分流、限流」「借道通行」「其它」
 * the incident_status is generate follow by: 
     * 45% 「进行中」
     * 30% 「已完成」
