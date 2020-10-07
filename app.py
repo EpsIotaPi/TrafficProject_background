@@ -208,8 +208,10 @@ def map():
 # 事故救援——Points
 @app.route('/rescue', methods=["GET", "POST"])
 def rescue():
-    p_id = json.loads(request.get_data(as_text=True))
-
+    pid_get = request.args.getlist("idList[]")
+    p_id = []
+    for i in pid_get:
+        p_id.append(int(i))
     Plans = make_rescuePlan(np.array(p_id))
 
     incidentArray = []
@@ -243,7 +245,7 @@ def rescue():
             'incident': incidentArray
         }
     }
-
+    print(outputData)
     return jsonify(outputData)
 
 
