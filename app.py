@@ -201,7 +201,6 @@ def map():
             'accidentPoints': accidentPointsArray
         }
     }
-
     return jsonify(outputData)
 
 
@@ -245,7 +244,6 @@ def rescue():
             'incident': incidentArray
         }
     }
-    print(outputData)
     return jsonify(outputData)
 
 

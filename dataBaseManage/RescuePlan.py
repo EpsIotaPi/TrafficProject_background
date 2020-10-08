@@ -27,7 +27,7 @@ def departRoute(route:str):
 def FindData_from_Points(p_id: int) -> Point:
     # make sql statement
     sqlStatement = "select * from Points where p_id=%d" % (p_id)
-    print(sqlStatement)
+    # print(sqlStatement)
 
     # execute sql statement
     gripData = accessDatabase(sqlStatement)
@@ -59,19 +59,19 @@ class RescuePlan:
 def make_rescuePlan(incident_id: list) -> [RescuePlan]:
     result = []
     carNums_Array, route_Array, distance_Array, times_Array = get_input(accident_index=incident_id)
-
     index = 0
     theShortTime = 0
     for i in range(0, len(carNums_Array) - 1):
         for j in range(0, len(carNums_Array[i]) - 1):
-            plan = RescuePlan(distance=distance_Array[i][j],
-                              time=times_Array[i][j],
-                              vehicle_count=carNums_Array[i][j],
-                              route=route_Array[i][j])
-            result.append(plan)
-            if result[theShortTime].time > plan.time:
-                theShortTime = index
-            index += 1
+            if carNums_Array[i][j] != 0:
+                plan = RescuePlan(distance=distance_Array[i][j],
+                                  time=times_Array[i][j],
+                                  vehicle_count=carNums_Array[i][j],
+                                  route=route_Array[i][j])
+                result.append(plan)
+                if result[theShortTime].time > plan.time:
+                    theShortTime = index
+                index += 1
     result[theShortTime].isFast = True
 
     return result
