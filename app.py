@@ -187,7 +187,9 @@ def map():
         dict = {
             "name": i.name,
             "incident_num": countIncidents(i),
-            "p_id": i.id,
+            "entity_info": {
+                "p_id": i.id
+            },
             "coordinate": {
                 "long": i.position.longitude,
                 "lati": i.position.latitude
@@ -206,7 +208,7 @@ def map():
 
 
 # 事故救援——Points
-@app.route('/rescue', methods=["GET", "POST"])
+@app.route('/rescue')
 def rescue():
     pid_get = request.args.getlist("idList[]")
     p_id = []
