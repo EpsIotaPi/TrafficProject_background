@@ -187,6 +187,7 @@ def map():
         dict = {
             "name": i.name,
             "incident_num": countIncidents(i),
+            "p_id": i.id,
             "coordinate": {
                 "long": i.position.longitude,
                 "lati": i.position.latitude
