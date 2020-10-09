@@ -27,7 +27,6 @@ def departRoute(route:str):
 def FindData_from_Points(p_id: int) -> Point:
     # make sql statement
     sqlStatement = "select * from Points where p_id=%d" % (p_id)
-    # print(sqlStatement)
 
     # execute sql statement
     gripData = accessDatabase(sqlStatement)
@@ -47,7 +46,7 @@ class RescuePlan:
     def __init__(self, time:float, distance:float, vehicle_count:int, route:str):
         self.time = int(time * 60)  #时间向下取整
         self.distance = int(distance) #路程向下取整
-        self.vehicle_count = vehicle_count
+        self.vehicle_count = int(vehicle_count)
 
         Points_id = departRoute(route)
         Points = []

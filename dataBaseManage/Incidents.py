@@ -30,7 +30,6 @@ def FindData_from_Incidents(keyword:str, IncidentType:str) -> [Incident]:
             sqlStatement += " and "
     if IncidentType != '':
         sqlStatement += "Incidents_Type=\'%s\'" % IncidentType
-    print(sqlStatement)
 
     # execute sql statement
     gripData = accessDatabase(sqlStatement)

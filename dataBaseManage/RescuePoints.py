@@ -30,8 +30,6 @@ def FindData_from_RescuePoints(keyword:str) -> [rescuePoint]:
     if keyword != '':
         sqlStatement += " where rp_name Like \'%" + keyword + "%\'"
 
-    print(sqlStatement)
-
     # execute sql statement
     gripData = accessDatabase(sqlStatement)
 

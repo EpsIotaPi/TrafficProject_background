@@ -20,7 +20,6 @@ class Point:
 def accessDatabase(sqlStatement:str):
     # connect to database
     conn = sqlite3.connect('TrafficDataBase.db')
-    print ("Opened database successfully")
     cursor = conn.cursor()
 
     # execute sql statement and output data

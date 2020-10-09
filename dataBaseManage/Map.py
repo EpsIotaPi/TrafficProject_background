@@ -20,7 +20,6 @@ def selectRandomAccidentPoints(num: int) -> [Point]:
                                 name=j[1],
                                 long=j[2],
                                 lati=j[3]))
-            print(len(result))
     return result
 
 def countIncidents(Point) -> int:

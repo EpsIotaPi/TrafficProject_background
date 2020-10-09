@@ -25,8 +25,6 @@ def FindData_from_ChatMonitor(keyword:str, status:str) -> [Group]:
     if status != '':
         sqlStatement += "moni_Status=\'%s\'" % status
 
-    # TODO: add ordby statement
-    print(sqlStatement)
 
     # execute sql statement
     gripData = accessDatabase(sqlStatement)
