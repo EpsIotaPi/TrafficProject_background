@@ -10,6 +10,8 @@ from dataBaseManage.Incidents import *
 from dataBaseManage.Map import *
 from dataBaseManage.RescuePlan import *
 
+from mapSetting import *
+
 # ---------------------------------------------------
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -249,7 +251,7 @@ def rescue():
     }
     return jsonify(outputData)
 
-
+randomTraffic(20, 100)
 
 if __name__ == '__main__':
 
