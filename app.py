@@ -11,6 +11,7 @@ from dataBaseManage.Map import *
 from dataBaseManage.RescuePlan import *
 
 from mapSetting import *
+from EntityRecog.predict import predict
 
 # ---------------------------------------------------
 app = Flask(__name__)
@@ -90,6 +91,34 @@ def groups():
             'group_info': groupArray
         }
     }
+    return jsonify(outputData)
+
+
+#在线录入
+@app.route('/add_new')
+def add_new():
+    content = request.args.get("content")
+    if content == None:
+        content = ''
+
+    POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output = predict(content)
+
+    #TODO:添加进数据库？
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'Incident_time': TIME,
+            'Incident_type': class_output,
+            'highway_name': HWN,
+            'highway_num': HWNB,
+            'highway_direction': DIR,
+            'rode_section': RSCT,
+            'distance': DIS
+        }
+    }
+
     return jsonify(outputData)
 
 
@@ -251,7 +280,7 @@ def rescue():
     }
     return jsonify(outputData)
 
-randomTraffic(20, 100)
+
 
 if __name__ == '__main__':
 

@@ -1,0 +1,242 @@
+2020-10-03 11:02:52,525 - logger/logger.txt - INFO - start train......
+2020-10-03 11:02:59,846 - logger/logger.txt - INFO - epoch: 0	 step: 0/125	 loss: 219.205	 accuracy: 0.242
+2020-10-03 11:03:02,985 - logger/logger.txt - INFO - epoch: 0	 step: 1/125	 loss: 131.877	 accuracy: 0.148
+2020-10-03 11:03:06,130 - logger/logger.txt - INFO - epoch: 0	 step: 2/125	 loss: 175.741	 accuracy: 0.180
+2020-10-03 11:03:09,235 - logger/logger.txt - INFO - epoch: 0	 step: 3/125	 loss: 122.642	 accuracy: 0.242
+2020-10-03 11:03:12,315 - logger/logger.txt - INFO - epoch: 0	 step: 4/125	 loss: 134.425	 accuracy: 0.281
+2020-10-03 11:03:15,365 - logger/logger.txt - INFO - epoch: 0	 step: 5/125	 loss: 128.666	 accuracy: 0.266
+2020-10-03 11:03:18,415 - logger/logger.txt - INFO - epoch: 0	 step: 6/125	 loss: 125.065	 accuracy: 0.281
+2020-10-03 11:03:21,520 - logger/logger.txt - INFO - epoch: 0	 step: 7/125	 loss: 121.656	 accuracy: 0.297
+2020-10-03 11:03:24,565 - logger/logger.txt - INFO - epoch: 0	 step: 8/125	 loss: 121.080	 accuracy: 0.273
+2020-10-03 11:03:27,605 - logger/logger.txt - INFO - epoch: 0	 step: 9/125	 loss: 117.847	 accuracy: 0.188
+2020-10-03 11:03:30,636 - logger/logger.txt - INFO - epoch: 0	 step: 10/125	 loss: 119.147	 accuracy: 0.266
+2020-10-03 11:03:33,670 - logger/logger.txt - INFO - epoch: 0	 step: 11/125	 loss: 121.716	 accuracy: 0.172
+2020-10-03 11:03:36,741 - logger/logger.txt - INFO - epoch: 0	 step: 12/125	 loss: 119.916	 accuracy: 0.266
+2020-10-03 11:03:39,805 - logger/logger.txt - INFO - epoch: 0	 step: 13/125	 loss: 107.049	 accuracy: 0.266
+2020-10-03 11:03:42,535 - logger/logger.txt - INFO - epoch: 0	 step: 14/125	 loss: 105.380	 accuracy: 0.258
+2020-10-03 11:03:44,720 - logger/logger.txt - INFO - epoch: 0	 step: 15/125	 loss: 111.207	 accuracy: 0.281
+2020-10-03 11:03:46,971 - logger/logger.txt - INFO - epoch: 0	 step: 16/125	 loss: 107.583	 accuracy: 0.352
+2020-10-03 11:03:49,255 - logger/logger.txt - INFO - epoch: 0	 step: 17/125	 loss: 104.022	 accuracy: 0.273
+2020-10-03 11:03:51,525 - logger/logger.txt - INFO - epoch: 0	 step: 18/125	 loss: 103.338	 accuracy: 0.297
+2020-10-03 11:03:53,805 - logger/logger.txt - INFO - epoch: 0	 step: 19/125	 loss: 103.778	 accuracy: 0.234
+2020-10-03 11:03:56,185 - logger/logger.txt - INFO - epoch: 0	 step: 20/125	 loss: 97.954	 accuracy: 0.273
+2020-10-03 11:03:58,475 - logger/logger.txt - INFO - epoch: 0	 step: 21/125	 loss: 89.122	 accuracy: 0.297
+2020-10-03 11:04:00,610 - logger/logger.txt - INFO - epoch: 0	 step: 22/125	 loss: 91.271	 accuracy: 0.266
+2020-10-03 11:04:02,865 - logger/logger.txt - INFO - epoch: 0	 step: 23/125	 loss: 81.418	 accuracy: 0.352
+2020-10-03 11:04:05,119 - logger/logger.txt - INFO - epoch: 0	 step: 24/125	 loss: 86.675	 accuracy: 0.406
+2020-10-03 11:04:07,260 - logger/logger.txt - INFO - epoch: 0	 step: 25/125	 loss: 89.717	 accuracy: 0.359
+2020-10-03 11:04:09,405 - logger/logger.txt - INFO - epoch: 0	 step: 26/125	 loss: 84.214	 accuracy: 0.266
+2020-10-03 11:04:11,665 - logger/logger.txt - INFO - epoch: 0	 step: 27/125	 loss: 79.149	 accuracy: 0.344
+2020-10-03 11:04:13,856 - logger/logger.txt - INFO - epoch: 0	 step: 28/125	 loss: 80.030	 accuracy: 0.312
+2020-10-03 11:04:15,975 - logger/logger.txt - INFO - epoch: 0	 step: 29/125	 loss: 78.393	 accuracy: 0.359
+2020-10-03 11:04:18,155 - logger/logger.txt - INFO - epoch: 0	 step: 30/125	 loss: 70.079	 accuracy: 0.305
+2020-10-03 11:04:20,306 - logger/logger.txt - INFO - epoch: 0	 step: 31/125	 loss: 69.706	 accuracy: 0.242
+2020-10-03 11:04:22,385 - logger/logger.txt - INFO - epoch: 0	 step: 32/125	 loss: 69.409	 accuracy: 0.344
+2020-10-03 11:04:24,477 - logger/logger.txt - INFO - epoch: 0	 step: 33/125	 loss: 66.395	 accuracy: 0.305
+2020-10-03 11:04:26,555 - logger/logger.txt - INFO - epoch: 0	 step: 34/125	 loss: 62.006	 accuracy: 0.320
+2020-10-03 11:04:28,696 - logger/logger.txt - INFO - epoch: 0	 step: 35/125	 loss: 59.460	 accuracy: 0.297
+2020-10-03 11:04:30,803 - logger/logger.txt - INFO - epoch: 0	 step: 36/125	 loss: 59.436	 accuracy: 0.289
+2020-10-03 11:04:32,995 - logger/logger.txt - INFO - epoch: 0	 step: 37/125	 loss: 56.508	 accuracy: 0.406
+2020-10-03 11:22:36,417 - logger/logger.txt - INFO - start train......
+2020-10-03 11:22:40,491 - logger/logger.txt - INFO - epoch: 0	 step: 0/125	 loss: 207.952	 accuracy: 0.172
+2020-10-03 11:22:42,780 - logger/logger.txt - INFO - epoch: 0	 step: 1/125	 loss: 132.103	 accuracy: 0.109
+2020-10-03 11:22:44,950 - logger/logger.txt - INFO - epoch: 0	 step: 2/125	 loss: 195.884	 accuracy: 0.070
+2020-10-03 11:22:47,107 - logger/logger.txt - INFO - epoch: 0	 step: 3/125	 loss: 122.055	 accuracy: 0.141
+2020-10-03 11:22:49,232 - logger/logger.txt - INFO - epoch: 0	 step: 4/125	 loss: 136.834	 accuracy: 0.172
+2020-10-03 11:22:51,339 - logger/logger.txt - INFO - epoch: 0	 step: 5/125	 loss: 131.456	 accuracy: 0.281
+2020-10-03 11:22:53,428 - logger/logger.txt - INFO - epoch: 0	 step: 6/125	 loss: 124.998	 accuracy: 0.195
+2020-10-03 11:22:55,516 - logger/logger.txt - INFO - epoch: 0	 step: 7/125	 loss: 124.794	 accuracy: 0.211
+2020-10-03 11:22:57,588 - logger/logger.txt - INFO - epoch: 0	 step: 8/125	 loss: 123.243	 accuracy: 0.156
+2020-10-03 11:22:59,664 - logger/logger.txt - INFO - epoch: 0	 step: 9/125	 loss: 117.950	 accuracy: 0.203
+2020-10-03 11:23:01,825 - logger/logger.txt - INFO - epoch: 0	 step: 10/125	 loss: 119.058	 accuracy: 0.320
+2020-10-03 11:23:04,028 - logger/logger.txt - INFO - epoch: 0	 step: 11/125	 loss: 121.180	 accuracy: 0.203
+2020-10-03 11:23:06,159 - logger/logger.txt - INFO - epoch: 0	 step: 12/125	 loss: 119.953	 accuracy: 0.242
+2020-10-03 11:23:08,414 - logger/logger.txt - INFO - epoch: 0	 step: 13/125	 loss: 109.497	 accuracy: 0.289
+2020-10-03 11:23:10,589 - logger/logger.txt - INFO - epoch: 0	 step: 14/125	 loss: 106.551	 accuracy: 0.234
+2020-10-03 11:23:12,784 - logger/logger.txt - INFO - epoch: 0	 step: 15/125	 loss: 109.564	 accuracy: 0.234
+2020-10-03 11:23:14,937 - logger/logger.txt - INFO - epoch: 0	 step: 16/125	 loss: 107.602	 accuracy: 0.188
+2020-10-03 11:23:17,061 - logger/logger.txt - INFO - epoch: 0	 step: 17/125	 loss: 106.330	 accuracy: 0.250
+2020-10-03 11:23:19,222 - logger/logger.txt - INFO - epoch: 0	 step: 18/125	 loss: 104.893	 accuracy: 0.289
+2020-10-03 11:23:21,392 - logger/logger.txt - INFO - epoch: 0	 step: 19/125	 loss: 104.349	 accuracy: 0.234
+2020-10-03 11:23:23,528 - logger/logger.txt - INFO - epoch: 0	 step: 20/125	 loss: 102.306	 accuracy: 0.383
+2020-10-03 11:23:25,687 - logger/logger.txt - INFO - epoch: 0	 step: 21/125	 loss: 95.300	 accuracy: 0.312
+2020-10-03 11:23:27,825 - logger/logger.txt - INFO - epoch: 0	 step: 22/125	 loss: 97.029	 accuracy: 0.273
+2020-10-03 11:23:30,017 - logger/logger.txt - INFO - epoch: 0	 step: 23/125	 loss: 91.569	 accuracy: 0.297
+2020-10-03 11:23:32,317 - logger/logger.txt - INFO - epoch: 0	 step: 24/125	 loss: 90.044	 accuracy: 0.375
+2020-10-03 11:23:34,448 - logger/logger.txt - INFO - epoch: 0	 step: 25/125	 loss: 86.800	 accuracy: 0.398
+2020-10-03 11:23:36,579 - logger/logger.txt - INFO - epoch: 0	 step: 26/125	 loss: 86.088	 accuracy: 0.328
+2020-10-03 11:23:38,701 - logger/logger.txt - INFO - epoch: 0	 step: 27/125	 loss: 82.900	 accuracy: 0.383
+2020-10-03 11:23:40,820 - logger/logger.txt - INFO - epoch: 0	 step: 28/125	 loss: 75.768	 accuracy: 0.336
+2020-10-03 11:23:42,968 - logger/logger.txt - INFO - epoch: 0	 step: 29/125	 loss: 77.870	 accuracy: 0.305
+2020-10-03 11:23:45,121 - logger/logger.txt - INFO - epoch: 0	 step: 30/125	 loss: 71.262	 accuracy: 0.289
+2020-10-03 11:23:47,391 - logger/logger.txt - INFO - epoch: 0	 step: 31/125	 loss: 64.601	 accuracy: 0.320
+2020-10-03 11:23:49,499 - logger/logger.txt - INFO - epoch: 0	 step: 32/125	 loss: 65.768	 accuracy: 0.344
+2020-10-03 11:23:51,647 - logger/logger.txt - INFO - epoch: 0	 step: 33/125	 loss: 62.234	 accuracy: 0.266
+2020-10-03 11:23:53,768 - logger/logger.txt - INFO - epoch: 0	 step: 34/125	 loss: 57.785	 accuracy: 0.297
+2020-10-03 11:23:55,942 - logger/logger.txt - INFO - epoch: 0	 step: 35/125	 loss: 55.633	 accuracy: 0.305
+2020-10-03 11:23:58,119 - logger/logger.txt - INFO - epoch: 0	 step: 36/125	 loss: 56.535	 accuracy: 0.352
+2020-10-03 11:24:00,538 - logger/logger.txt - INFO - epoch: 0	 step: 37/125	 loss: 53.255	 accuracy: 0.344
+2020-10-03 11:24:02,792 - logger/logger.txt - INFO - epoch: 0	 step: 38/125	 loss: 49.990	 accuracy: 0.305
+2020-10-03 11:24:05,023 - logger/logger.txt - INFO - epoch: 0	 step: 39/125	 loss: 45.622	 accuracy: 0.328
+2020-10-03 11:24:07,233 - logger/logger.txt - INFO - epoch: 0	 step: 40/125	 loss: 48.068	 accuracy: 0.336
+2020-10-03 11:24:09,459 - logger/logger.txt - INFO - epoch: 0	 step: 41/125	 loss: 45.041	 accuracy: 0.336
+2020-10-03 11:24:11,641 - logger/logger.txt - INFO - epoch: 0	 step: 42/125	 loss: 42.529	 accuracy: 0.391
+2020-10-03 11:24:13,854 - logger/logger.txt - INFO - epoch: 0	 step: 43/125	 loss: 46.399	 accuracy: 0.305
+2020-10-03 11:24:16,073 - logger/logger.txt - INFO - epoch: 0	 step: 44/125	 loss: 41.769	 accuracy: 0.289
+2020-10-03 11:24:18,251 - logger/logger.txt - INFO - epoch: 0	 step: 45/125	 loss: 39.906	 accuracy: 0.289
+2020-10-03 11:24:20,446 - logger/logger.txt - INFO - epoch: 0	 step: 46/125	 loss: 38.645	 accuracy: 0.391
+2020-10-03 11:24:22,631 - logger/logger.txt - INFO - epoch: 0	 step: 47/125	 loss: 38.693	 accuracy: 0.328
+2020-10-03 11:24:24,830 - logger/logger.txt - INFO - epoch: 0	 step: 48/125	 loss: 35.027	 accuracy: 0.359
+2020-10-03 11:24:27,037 - logger/logger.txt - INFO - epoch: 0	 step: 49/125	 loss: 34.630	 accuracy: 0.398
+2020-10-03 11:24:29,157 - logger/logger.txt - INFO - epoch: 0	 step: 50/125	 loss: 33.521	 accuracy: 0.281
+2020-10-03 11:24:31,255 - logger/logger.txt - INFO - epoch: 0	 step: 51/125	 loss: 36.935	 accuracy: 0.281
+2020-10-03 11:24:33,404 - logger/logger.txt - INFO - epoch: 0	 step: 52/125	 loss: 34.327	 accuracy: 0.359
+2020-10-03 11:24:35,568 - logger/logger.txt - INFO - epoch: 0	 step: 53/125	 loss: 34.828	 accuracy: 0.352
+2020-10-03 11:24:37,691 - logger/logger.txt - INFO - epoch: 0	 step: 54/125	 loss: 31.974	 accuracy: 0.336
+2020-10-03 11:24:39,864 - logger/logger.txt - INFO - epoch: 0	 step: 55/125	 loss: 30.812	 accuracy: 0.312
+2020-10-03 11:24:42,056 - logger/logger.txt - INFO - epoch: 0	 step: 56/125	 loss: 32.584	 accuracy: 0.359
+2020-10-03 11:24:44,276 - logger/logger.txt - INFO - epoch: 0	 step: 57/125	 loss: 29.345	 accuracy: 0.281
+2020-10-03 11:24:46,451 - logger/logger.txt - INFO - epoch: 0	 step: 58/125	 loss: 32.753	 accuracy: 0.352
+2020-10-03 11:24:48,696 - logger/logger.txt - INFO - epoch: 0	 step: 59/125	 loss: 29.402	 accuracy: 0.312
+2020-10-03 11:24:50,890 - logger/logger.txt - INFO - epoch: 0	 step: 60/125	 loss: 28.850	 accuracy: 0.461
+2020-10-03 11:24:53,117 - logger/logger.txt - INFO - epoch: 0	 step: 61/125	 loss: 28.037	 accuracy: 0.359
+2020-10-03 11:24:55,313 - logger/logger.txt - INFO - epoch: 0	 step: 62/125	 loss: 27.739	 accuracy: 0.320
+2020-10-03 11:24:57,509 - logger/logger.txt - INFO - epoch: 0	 step: 63/125	 loss: 28.065	 accuracy: 0.320
+2020-10-03 11:24:59,666 - logger/logger.txt - INFO - epoch: 0	 step: 64/125	 loss: 30.281	 accuracy: 0.375
+2020-10-03 11:25:01,842 - logger/logger.txt - INFO - epoch: 0	 step: 65/125	 loss: 26.183	 accuracy: 0.305
+2020-10-03 11:25:04,064 - logger/logger.txt - INFO - epoch: 0	 step: 66/125	 loss: 26.740	 accuracy: 0.312
+2020-10-03 11:25:06,387 - logger/logger.txt - INFO - epoch: 0	 step: 67/125	 loss: 26.288	 accuracy: 0.359
+2020-10-03 11:25:08,658 - logger/logger.txt - INFO - epoch: 0	 step: 68/125	 loss: 26.034	 accuracy: 0.336
+2020-10-03 11:25:10,947 - logger/logger.txt - INFO - epoch: 0	 step: 69/125	 loss: 26.160	 accuracy: 0.242
+2020-10-03 11:25:13,247 - logger/logger.txt - INFO - epoch: 0	 step: 70/125	 loss: 21.491	 accuracy: 0.391
+2020-10-03 11:25:15,558 - logger/logger.txt - INFO - epoch: 0	 step: 71/125	 loss: 24.382	 accuracy: 0.367
+2020-10-03 11:25:17,778 - logger/logger.txt - INFO - epoch: 0	 step: 72/125	 loss: 25.215	 accuracy: 0.352
+2020-10-03 11:25:19,977 - logger/logger.txt - INFO - epoch: 0	 step: 73/125	 loss: 24.101	 accuracy: 0.344
+2020-10-03 11:25:22,165 - logger/logger.txt - INFO - epoch: 0	 step: 74/125	 loss: 24.104	 accuracy: 0.336
+2020-10-03 11:25:24,339 - logger/logger.txt - INFO - epoch: 0	 step: 75/125	 loss: 25.684	 accuracy: 0.320
+2020-10-03 11:25:26,570 - logger/logger.txt - INFO - epoch: 0	 step: 76/125	 loss: 23.294	 accuracy: 0.312
+2020-10-03 11:25:28,853 - logger/logger.txt - INFO - epoch: 0	 step: 77/125	 loss: 24.503	 accuracy: 0.344
+2020-10-03 11:25:31,129 - logger/logger.txt - INFO - epoch: 0	 step: 78/125	 loss: 24.799	 accuracy: 0.273
+2020-10-03 11:25:33,460 - logger/logger.txt - INFO - epoch: 0	 step: 79/125	 loss: 24.262	 accuracy: 0.391
+2020-10-03 11:25:35,797 - logger/logger.txt - INFO - epoch: 0	 step: 80/125	 loss: 22.654	 accuracy: 0.297
+2020-10-03 11:25:38,062 - logger/logger.txt - INFO - epoch: 0	 step: 81/125	 loss: 22.668	 accuracy: 0.320
+2020-10-03 11:25:40,286 - logger/logger.txt - INFO - epoch: 0	 step: 82/125	 loss: 24.317	 accuracy: 0.367
+2020-10-03 11:25:42,475 - logger/logger.txt - INFO - epoch: 0	 step: 83/125	 loss: 23.344	 accuracy: 0.391
+2020-10-03 11:25:44,606 - logger/logger.txt - INFO - epoch: 0	 step: 84/125	 loss: 23.128	 accuracy: 0.422
+2020-10-03 11:25:46,778 - logger/logger.txt - INFO - epoch: 0	 step: 85/125	 loss: 22.081	 accuracy: 0.406
+2020-10-03 11:25:48,941 - logger/logger.txt - INFO - epoch: 0	 step: 86/125	 loss: 22.083	 accuracy: 0.422
+2020-10-03 11:25:51,145 - logger/logger.txt - INFO - epoch: 0	 step: 87/125	 loss: 20.733	 accuracy: 0.438
+2020-10-03 11:25:53,414 - logger/logger.txt - INFO - epoch: 0	 step: 88/125	 loss: 20.503	 accuracy: 0.367
+2020-10-03 11:25:55,669 - logger/logger.txt - INFO - epoch: 0	 step: 89/125	 loss: 21.778	 accuracy: 0.383
+2020-10-03 11:25:57,895 - logger/logger.txt - INFO - epoch: 0	 step: 90/125	 loss: 22.539	 accuracy: 0.367
+2020-10-03 11:26:00,086 - logger/logger.txt - INFO - epoch: 0	 step: 91/125	 loss: 21.391	 accuracy: 0.398
+2020-10-03 11:26:02,332 - logger/logger.txt - INFO - epoch: 0	 step: 92/125	 loss: 22.090	 accuracy: 0.406
+2020-10-03 11:26:04,658 - logger/logger.txt - INFO - epoch: 0	 step: 93/125	 loss: 21.731	 accuracy: 0.359
+2020-10-03 11:26:06,871 - logger/logger.txt - INFO - epoch: 0	 step: 94/125	 loss: 23.314	 accuracy: 0.352
+2020-10-03 11:26:09,036 - logger/logger.txt - INFO - epoch: 0	 step: 95/125	 loss: 22.869	 accuracy: 0.461
+2020-10-03 11:26:11,197 - logger/logger.txt - INFO - epoch: 0	 step: 96/125	 loss: 23.368	 accuracy: 0.375
+2020-10-03 11:26:13,394 - logger/logger.txt - INFO - epoch: 0	 step: 97/125	 loss: 23.249	 accuracy: 0.391
+2020-10-03 11:26:15,550 - logger/logger.txt - INFO - epoch: 0	 step: 98/125	 loss: 19.026	 accuracy: 0.398
+2020-10-03 11:26:17,725 - logger/logger.txt - INFO - epoch: 0	 step: 99/125	 loss: 22.245	 accuracy: 0.414
+2020-10-03 11:26:19,922 - logger/logger.txt - INFO - epoch: 0	 step: 100/125	 loss: 19.340	 accuracy: 0.359
+2020-10-03 11:26:22,173 - logger/logger.txt - INFO - epoch: 0	 step: 101/125	 loss: 22.673	 accuracy: 0.367
+2020-10-03 11:26:24,402 - logger/logger.txt - INFO - epoch: 0	 step: 102/125	 loss: 19.522	 accuracy: 0.352
+2020-10-03 11:26:26,649 - logger/logger.txt - INFO - epoch: 0	 step: 103/125	 loss: 20.182	 accuracy: 0.398
+2020-10-03 11:26:28,846 - logger/logger.txt - INFO - epoch: 0	 step: 104/125	 loss: 19.237	 accuracy: 0.438
+2020-10-03 11:26:31,227 - logger/logger.txt - INFO - epoch: 0	 step: 105/125	 loss: 21.552	 accuracy: 0.383
+2020-10-03 11:26:33,458 - logger/logger.txt - INFO - epoch: 0	 step: 106/125	 loss: 19.096	 accuracy: 0.422
+2020-10-03 11:26:35,690 - logger/logger.txt - INFO - epoch: 0	 step: 107/125	 loss: 18.950	 accuracy: 0.414
+2020-10-03 11:26:37,830 - logger/logger.txt - INFO - epoch: 0	 step: 108/125	 loss: 22.420	 accuracy: 0.406
+2020-10-03 11:26:39,955 - logger/logger.txt - INFO - epoch: 0	 step: 109/125	 loss: 20.511	 accuracy: 0.367
+2020-10-03 11:26:42,148 - logger/logger.txt - INFO - epoch: 0	 step: 110/125	 loss: 20.617	 accuracy: 0.391
+2020-10-03 11:26:44,344 - logger/logger.txt - INFO - epoch: 0	 step: 111/125	 loss: 21.571	 accuracy: 0.352
+2020-10-03 11:26:46,544 - logger/logger.txt - INFO - epoch: 0	 step: 112/125	 loss: 18.796	 accuracy: 0.383
+2020-10-03 11:26:48,881 - logger/logger.txt - INFO - epoch: 0	 step: 113/125	 loss: 20.995	 accuracy: 0.383
+2020-10-03 11:26:51,203 - logger/logger.txt - INFO - epoch: 0	 step: 114/125	 loss: 19.512	 accuracy: 0.422
+2020-10-03 11:26:53,453 - logger/logger.txt - INFO - epoch: 0	 step: 115/125	 loss: 19.821	 accuracy: 0.406
+2020-10-03 11:26:55,665 - logger/logger.txt - INFO - epoch: 0	 step: 116/125	 loss: 19.203	 accuracy: 0.445
+2020-10-03 11:26:57,925 - logger/logger.txt - INFO - epoch: 0	 step: 117/125	 loss: 18.798	 accuracy: 0.375
+2020-10-03 11:27:00,151 - logger/logger.txt - INFO - epoch: 0	 step: 118/125	 loss: 21.150	 accuracy: 0.383
+2020-10-03 11:27:02,352 - logger/logger.txt - INFO - epoch: 0	 step: 119/125	 loss: 20.856	 accuracy: 0.375
+2020-10-03 11:27:04,563 - logger/logger.txt - INFO - epoch: 0	 step: 120/125	 loss: 20.737	 accuracy: 0.445
+2020-10-03 11:27:06,799 - logger/logger.txt - INFO - epoch: 0	 step: 121/125	 loss: 17.850	 accuracy: 0.352
+2020-10-03 11:27:09,159 - logger/logger.txt - INFO - epoch: 0	 step: 122/125	 loss: 18.521	 accuracy: 0.305
+2020-10-03 11:27:11,482 - logger/logger.txt - INFO - epoch: 0	 step: 123/125	 loss: 17.213	 accuracy: 0.375
+2020-10-03 11:27:13,835 - logger/logger.txt - INFO - epoch: 0	 step: 124/125	 loss: 19.049	 accuracy: 0.352
+2020-10-03 11:27:14,428 - logger/logger.txt - INFO - evaluate......
+2020-10-03 11:27:48,253 - logger/logger.txt - INFO - 	position	recall 0.327	precision 0.908	f1 0.481
+2020-10-03 11:27:48,576 - logger/logger.txt - INFO - 	direction	recall 0.847	precision 0.954	f1 0.897
+2020-10-03 11:27:48,891 - logger/logger.txt - INFO - 	time	recall 0.71	precision 0.936	f1 0.807
+2020-10-03 11:27:49,186 - logger/logger.txt - INFO - 	distance	recall 0.755	precision 0.764	f1 0.76
+2020-10-03 11:27:49,489 - logger/logger.txt - INFO - 	road_section	recall 0.34	precision 0.994	f1 0.507
+2020-10-03 11:27:49,792 - logger/logger.txt - INFO - 	highway_name	recall 0.92	precision 0.978	f1 0.948
+2020-10-03 11:27:50,098 - logger/logger.txt - INFO - 	highway_number	recall 0.981	precision 0.98	f1 0.981
+2020-10-03 11:27:50,108 - logger/logger.txt - INFO -               precision    recall  f1-score   support
+
+           0       0.46      0.87      0.60      1521
+           1       0.29      0.21      0.24      1017
+           2       0.56      0.30      0.39       855
+           3       0.68      0.09      0.16       374
+           4       0.00      0.00      0.00       191
+           5       0.00      0.00      0.00       138
+
+    accuracy                           0.44      4096
+   macro avg       0.33      0.24      0.23      4096
+weighted avg       0.42      0.44      0.38      4096
+
+2020-10-03 11:27:52,353 - logger/logger.txt - INFO - epoch: 1	 step: 0/125	 loss: 20.736	 accuracy: 0.406
+2020-10-03 11:27:55,342 - logger/logger.txt - INFO - epoch: 1	 step: 1/125	 loss: 19.097	 accuracy: 0.391
+2020-10-03 11:27:57,658 - logger/logger.txt - INFO - epoch: 1	 step: 2/125	 loss: 22.122	 accuracy: 0.367
+2020-10-03 11:28:00,001 - logger/logger.txt - INFO - epoch: 1	 step: 3/125	 loss: 21.233	 accuracy: 0.406
+2020-10-03 11:28:02,203 - logger/logger.txt - INFO - epoch: 1	 step: 4/125	 loss: 19.695	 accuracy: 0.383
+2020-10-03 11:28:04,375 - logger/logger.txt - INFO - epoch: 1	 step: 5/125	 loss: 17.787	 accuracy: 0.461
+2020-10-03 11:28:06,516 - logger/logger.txt - INFO - epoch: 1	 step: 6/125	 loss: 22.462	 accuracy: 0.367
+2020-10-03 11:28:08,728 - logger/logger.txt - INFO - epoch: 1	 step: 7/125	 loss: 17.439	 accuracy: 0.375
+2020-10-03 11:28:10,991 - logger/logger.txt - INFO - epoch: 1	 step: 8/125	 loss: 18.178	 accuracy: 0.406
+2020-10-03 11:28:13,234 - logger/logger.txt - INFO - epoch: 1	 step: 9/125	 loss: 17.523	 accuracy: 0.422
+2020-10-03 11:28:15,460 - logger/logger.txt - INFO - epoch: 1	 step: 10/125	 loss: 19.799	 accuracy: 0.445
+2020-10-03 11:28:17,857 - logger/logger.txt - INFO - epoch: 1	 step: 11/125	 loss: 20.708	 accuracy: 0.484
+2020-10-03 11:28:20,153 - logger/logger.txt - INFO - epoch: 1	 step: 12/125	 loss: 19.058	 accuracy: 0.414
+2020-10-03 11:28:22,524 - logger/logger.txt - INFO - epoch: 1	 step: 13/125	 loss: 17.474	 accuracy: 0.414
+2020-10-03 11:28:25,193 - logger/logger.txt - INFO - epoch: 1	 step: 14/125	 loss: 16.195	 accuracy: 0.453
+2020-10-03 11:28:27,610 - logger/logger.txt - INFO - epoch: 1	 step: 15/125	 loss: 17.668	 accuracy: 0.453
+2020-10-03 11:28:29,974 - logger/logger.txt - INFO - epoch: 1	 step: 16/125	 loss: 16.311	 accuracy: 0.523
+2020-10-03 11:28:32,352 - logger/logger.txt - INFO - epoch: 1	 step: 17/125	 loss: 19.182	 accuracy: 0.414
+2020-10-03 11:28:34,730 - logger/logger.txt - INFO - epoch: 1	 step: 18/125	 loss: 18.220	 accuracy: 0.438
+2020-10-03 11:28:37,092 - logger/logger.txt - INFO - epoch: 1	 step: 19/125	 loss: 18.771	 accuracy: 0.430
+2020-10-03 11:28:39,486 - logger/logger.txt - INFO - epoch: 1	 step: 20/125	 loss: 18.139	 accuracy: 0.469
+2020-10-03 11:28:42,060 - logger/logger.txt - INFO - epoch: 1	 step: 21/125	 loss: 17.555	 accuracy: 0.406
+2020-10-03 11:28:44,555 - logger/logger.txt - INFO - epoch: 1	 step: 22/125	 loss: 21.629	 accuracy: 0.469
+2020-10-03 11:28:47,165 - logger/logger.txt - INFO - epoch: 1	 step: 23/125	 loss: 18.576	 accuracy: 0.523
+2020-10-03 11:28:49,590 - logger/logger.txt - INFO - epoch: 1	 step: 24/125	 loss: 19.392	 accuracy: 0.414
+2020-10-03 11:28:51,991 - logger/logger.txt - INFO - epoch: 1	 step: 25/125	 loss: 18.970	 accuracy: 0.484
+2020-10-03 11:28:54,609 - logger/logger.txt - INFO - epoch: 1	 step: 26/125	 loss: 17.426	 accuracy: 0.438
+2020-10-03 11:28:57,008 - logger/logger.txt - INFO - epoch: 1	 step: 27/125	 loss: 21.167	 accuracy: 0.492
+2020-10-03 11:28:59,269 - logger/logger.txt - INFO - epoch: 1	 step: 28/125	 loss: 15.700	 accuracy: 0.484
+2020-10-03 11:29:01,539 - logger/logger.txt - INFO - epoch: 1	 step: 29/125	 loss: 21.493	 accuracy: 0.422
+2020-10-03 11:29:03,802 - logger/logger.txt - INFO - epoch: 1	 step: 30/125	 loss: 18.793	 accuracy: 0.430
+2020-10-03 11:29:06,040 - logger/logger.txt - INFO - epoch: 1	 step: 31/125	 loss: 18.322	 accuracy: 0.422
+2020-10-03 11:29:08,357 - logger/logger.txt - INFO - epoch: 1	 step: 32/125	 loss: 18.252	 accuracy: 0.430
+2020-10-03 11:29:10,842 - logger/logger.txt - INFO - epoch: 1	 step: 33/125	 loss: 18.323	 accuracy: 0.508
+2020-10-03 11:29:13,890 - logger/logger.txt - INFO - epoch: 1	 step: 34/125	 loss: 17.316	 accuracy: 0.523
+2020-10-03 11:29:16,686 - logger/logger.txt - INFO - epoch: 1	 step: 35/125	 loss: 17.154	 accuracy: 0.469
+2020-10-03 11:29:19,433 - logger/logger.txt - INFO - epoch: 1	 step: 36/125	 loss: 19.850	 accuracy: 0.477
+2020-10-03 11:29:22,289 - logger/logger.txt - INFO - epoch: 1	 step: 37/125	 loss: 16.951	 accuracy: 0.531
+2020-10-03 11:29:24,936 - logger/logger.txt - INFO - epoch: 1	 step: 38/125	 loss: 18.022	 accuracy: 0.406
+2020-10-03 11:29:27,463 - logger/logger.txt - INFO - epoch: 1	 step: 39/125	 loss: 15.602	 accuracy: 0.508
+2020-10-03 11:29:29,954 - logger/logger.txt - INFO - epoch: 1	 step: 40/125	 loss: 18.409	 accuracy: 0.398
+2020-10-03 11:29:32,339 - logger/logger.txt - INFO - epoch: 1	 step: 41/125	 loss: 17.575	 accuracy: 0.477
+2020-10-03 11:29:34,836 - logger/logger.txt - INFO - epoch: 1	 step: 42/125	 loss: 16.294	 accuracy: 0.562
+2020-10-03 11:29:37,314 - logger/logger.txt - INFO - epoch: 1	 step: 43/125	 loss: 20.279	 accuracy: 0.539
+2020-10-03 11:29:39,659 - logger/logger.txt - INFO - epoch: 1	 step: 44/125	 loss: 15.836	 accuracy: 0.438
+2020-10-03 11:29:42,137 - logger/logger.txt - INFO - epoch: 1	 step: 45/125	 loss: 16.905	 accuracy: 0.477
+2020-10-03 11:29:44,626 - logger/logger.txt - INFO - epoch: 1	 step: 46/125	 loss: 18.365	 accuracy: 0.531
+2020-10-03 11:29:47,054 - logger/logger.txt - INFO - epoch: 1	 step: 47/125	 loss: 18.132	 accuracy: 0.477
+2020-10-03 11:29:49,421 - logger/logger.txt - INFO - epoch: 1	 step: 48/125	 loss: 15.930	 accuracy: 0.516
+2020-10-03 11:29:51,775 - logger/logger.txt - INFO - epoch: 1	 step: 49/125	 loss: 18.170	 accuracy: 0.562
+2020-10-03 11:29:54,115 - logger/logger.txt - INFO - epoch: 1	 step: 50/125	 loss: 14.660	 accuracy: 0.508
+2020-10-03 11:29:56,442 - logger/logger.txt - INFO - epoch: 1	 step: 51/125	 loss: 19.264	 accuracy: 0.414
+2020-10-03 11:29:58,904 - logger/logger.txt - INFO - epoch: 1	 step: 52/125	 loss: 19.120	 accuracy: 0.508
+2020-10-03 11:30:01,291 - logger/logger.txt - INFO - epoch: 1	 step: 53/125	 loss: 18.165	 accuracy: 0.539
+2020-10-03 11:30:03,783 - logger/logger.txt - INFO - epoch: 1	 step: 54/125	 loss: 16.443	 accuracy: 0.453
+2020-10-03 11:30:06,224 - logger/logger.txt - INFO - epoch: 1	 step: 55/125	 loss: 15.951	 accuracy: 0.500
