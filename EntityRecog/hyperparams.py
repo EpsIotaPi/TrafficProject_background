@@ -21,9 +21,9 @@ class HyperParams(object):
     test_source_dir = "dataset/test_source.txt"
     test_target_dir = "dataset/test_target.txt"
     test_categories_dir = "dataset/test_label.txt"
-    vocab_dir = "background/dataset/vocab.pkl"
+    vocab_dir = "EntityRecog/dataset/vocab.pkl"
     
-    checkpoint_dir = "background/ckpt"
+    checkpoint_dir = "EntityRecog/ckpt"
     checkpoint_path = "ckpt/bilstm_ner.org.ckpt"
 
     checkpoint_classify_dir = "ckpt_classify"

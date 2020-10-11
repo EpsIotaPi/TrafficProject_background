@@ -11,7 +11,7 @@ from dataBaseManage.Map import *
 from dataBaseManage.RescuePlan import *
 
 from mapSetting import *
-from EntityRecog.predict import predict
+from dataBaseManage.entityRecog import *
 
 # ---------------------------------------------------
 app = Flask(__name__)
@@ -97,25 +97,24 @@ def groups():
 #在线录入
 @app.route('/add_new')
 def add_new():
-    content = request.args.get("content")
-    if content == None:
-        content = ''
+    message = request.args.get("context")
+    if message == None:
+        message = ''
 
-    POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output = predict(content)
+    Incident = entity_info(message)
 
-    #TODO:添加进数据库？
 
     outputData = {
         'code': 1,
         'message': '调用成功',
         'data': {
-            'Incident_time': TIME,
-            'Incident_type': class_output,
-            'highway_name': HWN,
-            'highway_num': HWNB,
-            'highway_direction': DIR,
-            'rode_section': RSCT,
-            'distance': DIS
+            'Incident_time': Incident.time,
+            'Incident_type': Incident.type_info,
+            'highway_name': Incident.highway_name,
+            'highway_num': Incident.highway_number,
+            'highway_direction': Incident.direction,
+            'rode_section': Incident.road_section,
+            'distance': Incident.distance
         }
     }
 
