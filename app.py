@@ -11,7 +11,7 @@ from dataBaseManage.Map import *
 from dataBaseManage.RescuePlan import *
 
 from mapSetting import *
-from EntityRecog.predict import predict
+# from EntityRecog.predict import predict
 
 # ---------------------------------------------------
 app = Flask(__name__)
@@ -101,7 +101,7 @@ def add_new():
     if content == None:
         content = ''
 
-    POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output = predict(content)
+    # POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output = predict(content)
 
     #TODO:添加进数据库？
 
@@ -109,13 +109,13 @@ def add_new():
         'code': 1,
         'message': '调用成功',
         'data': {
-            'Incident_time': TIME,
-            'Incident_type': class_output,
-            'highway_name': HWN,
-            'highway_num': HWNB,
-            'highway_direction': DIR,
-            'rode_section': RSCT,
-            'distance': DIS
+            'Incident_time': '2020.10.21 10:23:12', #TIME,
+            'Incident_type': '分流、限流',#class_output,
+            'highway_name': '沪杭甬高速',#HWN,
+            'highway_num': 'G30',#HWNB,
+            'highway_direction': '西向东方向',#DIR,
+            'rode_section': '嘉兴路段',#RSCT,
+            'distance': '12km',#DIS
         }
     }
 
