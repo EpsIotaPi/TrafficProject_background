@@ -1,4 +1,6 @@
-# import numpy as np
+# 蚁群算法生成result表，包括每个救援点到每个节点的路径权值、最佳路径、时间、路程、
+
+import numpy as np
 from numpy import *
 # from scipy import spatial
 import pandas as pd
@@ -87,7 +89,7 @@ x11=0.1
 x12=0.9
 # 目标函数Z = w1 * BPR + w2 * accident_prob_matrix,x13=w1,x14=w2
 x13=0.9
-x14=5
+x14=0
 # 信息素挥发系数 rho=k*Nmax/(Nmax+n) ,tau=(1-rho)t+u*log(1+delta_tau) x15=k,x16=u
 x15=0.3
 x16=1.2
@@ -105,7 +107,7 @@ def cal_total_goal(routine, num_points):
     return sum
 
 # ——————————————调用——————————————
-from ACA_update import ACA_TSP
+from .ACA_update import ACA_TSP
 rescue_list=[19,29,34,15,45,33]  #rescur index
 
 # accident_list=[21,10,17]   #accident index

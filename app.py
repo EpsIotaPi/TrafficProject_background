@@ -12,6 +12,7 @@ from dataBaseManage.RescuePlan import *
 
 from mapSetting import *
 from dataBaseManage.entityRecog import *
+# from EntityRecog.predict import predict
 
 # ---------------------------------------------------
 app = Flask(__name__)
