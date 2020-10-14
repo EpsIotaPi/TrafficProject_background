@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 from flask_cors import *
 import json, datetime, time
 
+from rescueDeployment import *
+from rescueDeployment.transportation import rescuePlan_API
 
 from dataBaseManage.ChatMonitor import *
 from dataBaseManage.RescuePoints import *
@@ -45,7 +47,27 @@ def calTimes():
 
 # ---------------------------------------------------
 
+# new version
 
+# 系统菜单
+@app.route('/system_menu')
+def sysMenu():
+    outputData = {}
+    return jsonify(outputData)
+
+
+@app.route('/event_process')
+def eventProcess():
+    keyword = request.args.get('keyword')
+    incident_type = request.args.get('type')
+    page_num = request.args.get('pages')
+    status = int(request.args.get('status'))
+
+
+
+
+
+# old version
 # 群聊管理——ChatMonitor
 @app.route('/groups')
 def groups():
