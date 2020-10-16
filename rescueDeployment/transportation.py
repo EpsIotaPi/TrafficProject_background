@@ -33,7 +33,7 @@ def description_scheme(res,route_matrix,distance_matrix,time_matrix):
     node_data = delete(node_data, [0], axis=1)
     node_list =[]
     for i in range(45):
-        node = Node(i, node_data[i,0], node_data[i,1], node_data[i,2])
+        node = Node(i)
         node_list.append(node)
     res = np.array(res) # 派遣方案矩阵
     accident_num = res.shape[1]-1

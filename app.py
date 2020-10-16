@@ -2,9 +2,14 @@
 from flask import Flask, request, jsonify
 from flask_cors import *
 import numpy as np
-import datetime, time
+import datetime as dt
 
+from Date_Time import *
 from DBmanage.eventProcess import FindData_for_eventProcess
+from DBmanage.fromIncidentsTable import Find_position
+
+from rescueDeployment import *
+from rescueDeployment.transportation import rescuePlan_API
 
 # from EntityRecog.predict import predict
 
@@ -20,22 +25,6 @@ def pageManage(pageNum: int, index:int, info_count:int) -> bool:
         return True
     return False
 
-def calTimes():
-    nowTime = time.localtime()
-    transDay = nowTime.tm_wday
-    if transDay == 0 and nowTime.tm_hour < 8:
-        transDay = 7
-    transHour = nowTime.tm_hour - 8
-    transMin = nowTime.tm_min
-    transSec = nowTime.tm_sec
-
-    nowTime = datetime.datetime.now()
-    startDay = nowTime - datetime.timedelta(days=transDay,
-                                            hours=transHour,
-                                            minutes=transMin,
-                                            seconds=transSec)
-    transTime = int((nowTime - startDay).total_seconds() / 60)
-    return transTime
 
 # ---------------------------------------------------
 
@@ -60,7 +49,9 @@ def eventProcess():
     resultData = []
     for i in range(0, len(dataArray)):
         if pageManage(pageNum=page_num, index=i, info_count=10):
+            pastTime = Time(dataArray[i].storage_time)
             obj = {
+                "id": dataArray[i].id,
                 "source": dataArray[i].source,
                 "lv": dataArray[i].response_level,
                 "serial_num": dataArray[i].serial_number,
@@ -68,8 +59,7 @@ def eventProcess():
                 "road_section": dataArray[i].entity.road_section,
                 "direction": dataArray[i].entity.direction,
                 "time": dataArray[i].entity.times,
-                # TODO: add duration time
-                "duration": "20",
+                "duration": pastTime.toNow(),
                 "label": dataArray[i].entity.label,
                 "point": dataArray[i].position,
                 "cintent": dataArray[i].entity.content
@@ -83,6 +73,72 @@ def eventProcess():
     }
 
     return jsonify(outputData)
+
+
+
+
+
+
+@app.route('route_recommend')
+def routeRecommend():
+    incidentID_get = request.args.getlist("incident_id[]")
+    pos_id = []
+    serial = []
+    for i in incidentID_get:
+        Pos, Ser = Find_position(int(i))
+        pos_id.append(Pos)
+        serial.append(Ser)
+
+    rescuePlans = allPlans(rescuePlan_API(pos_id))
+    rescuePlans.self_compare()
+    rescuePlans.giveSerial(pos_id, serial)
+
+    rescuePlansArray = []
+    for plan in rescuePlans.plan_list:
+
+        incidentArray = []
+        for path in plan.path_list:
+            routeArray = []
+            for node in path.route_node:
+                route_dic = {
+                    'point_name': node.name,
+                    'point_id': node.id
+                }
+                routeArray.append(route_dic)
+
+            incident_dic = {
+                'rescue_routes': routeArray,
+                'incident_serial': path.serial_number,
+                'car_num': path.carNum,
+                'rescue_time': path.time,
+                'rescue_distance': path.distance,
+                'congestion_rate': plan.calCongestionRate()
+            }
+            incidentArray.append(incident_dic)
+
+        rescuePlan_dic = {
+            'incidents': incidentArray,
+            'joint_time': plan.sum_time,
+            'joint_distance': plan.sum_distance,
+            'compare_average_time': plan.compare_avgTime,
+            'compare_average_distance': plan.compare_avgDis,
+            'is_fast': plan.is_fast,
+            'is_short': plan.is_short,
+        }
+        rescuePlansArray.append(rescuePlan_dic)
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
+        'data': {
+            'rescuePlans': rescuePlansArray,
+            'average_time': rescuePlans.avgTime,
+            'average_distance': rescuePlans.avgDis,
+            'rescue_incidents': serial
+        }
+    }
+    return outputData
+
 
 
 # # old version
