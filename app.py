@@ -7,6 +7,7 @@ import datetime as dt
 from Date_Time import *
 from DBmanage.eventProcess import FindData_for_eventProcess
 from DBmanage.fromIncidentsTable import Find_position
+import map
 
 from rescueDeployment import *
 from rescueDeployment.transportation import rescuePlan_API
@@ -92,6 +93,12 @@ def routeRecommend():
     rescuePlans = allPlans(rescuePlan_API(pos_id))
     rescuePlans.self_compare()
     rescuePlans.giveSerial(pos_id, serial)
+
+    map.clear()
+    for id in pos_id:
+        map.randomTraffic(id, 100)
+    map.uniform(len(pos_id))
+
 
     rescuePlansArray = []
     for plan in rescuePlans.plan_list:
