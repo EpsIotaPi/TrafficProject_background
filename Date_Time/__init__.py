@@ -10,7 +10,6 @@ class Time:
         self.minute = int(text[14:16])
         self.second = int(text[17:19])
 
-
     def outputStr(self) -> str:
         return "%d-%02d-%02d %02d:%02d:%02d" % (self.year, self.month, self.day, self.hour, self.minute, self.second)
 
@@ -39,4 +38,35 @@ class Time:
                                                 seconds=transSec)
         return int((now - past).total_seconds() / 60)
 
+    def calInterval(self) -> (bool, bool, bool):
+        """
 
+        :return: (is_today, is_month, is_year)
+        """
+        now = datetime.datetime.now()
+        is_year = (self.year == now.year)
+        is_month = (is_year and self.month == now.month)
+        is_today = (is_month and self.day == now.day)
+
+        return is_today, is_month, is_year
+
+    def __eq__(self, other):
+        result = (self.year == other.year and self.month == other.month and self.day == other.day)
+        return result
+
+
+
+
+def somedays_ago(count:int) -> [Time]:
+    """
+    包括今天
+    :param count:
+    :return:
+    """
+    now = datetime.datetime.now()
+    days = []
+    for i in range(0, count):
+        otherDay = now + datetime.timedelta(days = -i)
+        days.append(Time(otherDay.strftime("%Y-%m-%d %H:%M:%S")))
+
+    return days

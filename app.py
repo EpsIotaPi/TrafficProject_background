@@ -1,12 +1,9 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import *
-import numpy as np
-import datetime as dt
 from objectManage import *
-from Date_Time import *
 from DBmanage.eventProcess import FindData_for_eventProcess
-from DBmanage.fromIncidentsTable import Find_position
+from DBmanage.fromIncidentsTable import *
 import map
 
 from rescueDeployment import *
@@ -39,7 +36,82 @@ def get_args(param:str):
 # 系统菜单
 @app.route('/system_menu')
 def sysMenu():
-    outputData = {}
+
+    iDay = iMon = iYear = rDay = rMon = rYear = 0
+    finished = Find_Incidents('已完成')
+    checked = Find_Incidents('已确认')
+    unchecked = Find_Incidents('待确认')
+
+    for i in finished:
+        print(i.calInterval())
+        if i.calInterval()[0]:
+            rDay += 1
+            iDay += 1
+        if i.calInterval()[1]:
+            rMon += 1
+            iMon += 1
+        if i.calInterval()[2]:
+            rYear += 1
+            iYear += 1
+    for i in checked:
+        if i.calInterval()[0]:
+            iDay += 1
+        if i.calInterval()[1]:
+            iMon += 1
+        if i.calInterval()[2]:
+            iYear += 1
+    for i in unchecked:
+        if i.calInterval()[0]:
+            iDay += 1
+        if i.calInterval()[1]:
+            iMon += 1
+        if i.calInterval()[2]:
+            iYear += 1
+
+    staticArray = []
+    day_list = somedays_ago(13)
+
+    for day in day_list:
+        finish = connect = 0
+
+        for i in finished:
+            if i == day:
+                finish += 1
+                connect += 1
+        for i in checked:
+            if i == day:
+                connect += 1
+        for i in unchecked:
+            if i == day:
+                connect += 1
+
+        dic = {
+            'name': day.outputDateTime().strftime("%m-%d"),
+            'value': {
+                'finish_incidents': finish,
+                'connect_incidents': connect
+            }
+        }
+        staticArray.append(dic)
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'incident': {
+                'day': iDay,
+                'month': iMon,
+                'year': iYear
+            },
+            'rescue': {
+                'day': rDay,
+                'month': rMon,
+                'year': rYear
+            },
+            'static': staticArray
+        }
+    }
+
     return jsonify(outputData)
 
 
@@ -149,7 +221,7 @@ def routeRecommend():
             'rescue_incidents': serial
         }
     }
-    return outputData
+    return jsonify(outputData)
 
 @app.route('/plan')
 def showScheme():
@@ -178,7 +250,7 @@ def showScheme():
         'message': "调用成功",
         'data': scheme_list
     }
-    return outputData
+    return jsonify(outputData)
 
 
 @app.route('/create_plan')
@@ -198,7 +270,7 @@ def createScheme():
         'code': 1,
         'message': "调用成功",
     }
-    return outputData
+    return jsonify(outputData)
 
 
 
