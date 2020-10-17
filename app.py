@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_cors import *
 import numpy as np
 import datetime as dt
-
+from objectManage import *
 from Date_Time import *
 from DBmanage.eventProcess import FindData_for_eventProcess
 from DBmanage.fromIncidentsTable import Find_position
@@ -26,6 +26,11 @@ def pageManage(pageNum: int, index:int, info_count:int) -> bool:
         return True
     return False
 
+def get_args(param:str):
+    result = request.args.get(param)
+    if result == None:
+        result = ''
+    return result
 
 # ---------------------------------------------------
 
@@ -40,8 +45,8 @@ def sysMenu():
 
 @app.route('/event_process')
 def eventProcess():
-    keyword = request.args.get('keyword')
-    incident_type = request.args.get('type')
+    keyword = get_args('keyword')
+    incident_type = get_args('type')
     if keyword == None:
         keyword = ''
     if incident_type == None:
@@ -143,6 +148,26 @@ def routeRecommend():
             'average_distance': rescuePlans.avgDis,
             'rescue_incidents': serial
         }
+    }
+    return outputData
+
+
+@app.route('/create_plan')
+def createScheme():
+    scheme_name = get_args('name')
+    scheme_area = get_args('area')
+    start_time = Time(get_args('start_time'))
+    end_time = Time(get_args('end_time'))
+    event_level = get_args('event_lv')
+    priority = get_args('priority')
+    description = get_args('description')
+
+    newScheme = Scheme(scheme_name, scheme_area, start_time, end_time, event_level, priority, description)
+    newScheme.storge2DB()
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
     }
     return outputData
 

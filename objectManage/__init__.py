@@ -1,4 +1,7 @@
 
+from DBmanage import *
+from Date_Time import *
+
 from EntityRecog.predict import predict
 
 class Entity:
@@ -31,3 +34,20 @@ class Incident:
         self.position = position
         self.status = status
         self.entity = entity
+
+class Scheme:
+    def __init__(self, name:str, area:str, start_time:Time, end_time:Time, event_level:str, priority:str, description = ''):
+        self.name = name
+        self.area = area
+        self.start_time = start_time.outputStr()
+        self.end_time = end_time.outputStr()
+        self.event_level = event_level
+        self.priority = priority
+        self.description =  description
+
+    def storge2DB(self):
+        sql_begin = "Insert Into Schemes (name, area, start_time, end_time, event_level, priority, description) Values ("
+        tup = (self.name, self.area, self.start_time, self.end_time, self.event_level, self.priority, self.description)
+        sql_statement = makeSql(sql_begin, tup, ')')
+        accessDatabase(sql_statement)
+
