@@ -111,6 +111,10 @@ class allPlans:
                 shortest = i
             self.plan_list[i].compare_avgTime = int((self.plan_list[i].sum_time - self.avgTime) / self.avgTime)
             self.plan_list[i].compare_avgDis = int((self.plan_list[i].sum_distance - self.avgDis) / self.avgDis)
+        self.plan_list[fastest].is_fast = True
+        self.plan_list[shortest].is_short = True
+
+
 
     def giveSerial(self, pos_id:[int], serial:[str]):
         for plan in self.plan_list:

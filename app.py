@@ -82,7 +82,7 @@ def eventProcess():
 
 @app.route('/route_recommend')
 def routeRecommend():
-    incidentID_get = request.args.getlist("incident_id[]")
+    incidentID_get = request.args.getlist("incident_id")
     pos_id = []
     serial = []
     for i in incidentID_get:
@@ -117,7 +117,7 @@ def routeRecommend():
                 'rescue_routes': routeArray,
                 'incident_serial': path.serial_number,
                 'car_num': path.carNum,
-                'rescue_time': path.time,
+                'rescue_time': int(path.time * 60),
                 'rescue_distance': path.distance,
                 'congestion_rate': path.calCongestionRate()
             }
@@ -125,7 +125,7 @@ def routeRecommend():
 
         rescuePlan_dic = {
             'incidents': incidentArray,
-            'joint_time': plan.sum_time,
+            'joint_time': int(plan.sum_time * 60),
             'joint_distance': plan.sum_distance,
             'compare_average_time': plan.compare_avgTime,
             'compare_average_distance': plan.compare_avgDis,
@@ -139,7 +139,7 @@ def routeRecommend():
         'message': "调用成功",
         'data': {
             'rescuePlans': rescuePlansArray,
-            'average_time': rescuePlans.avgTime,
+            'average_time': int(rescuePlans.avgTime * 60),
             'average_distance': rescuePlans.avgDis,
             'rescue_incidents': serial
         }
