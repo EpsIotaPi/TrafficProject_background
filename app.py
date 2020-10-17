@@ -151,6 +151,35 @@ def routeRecommend():
     }
     return outputData
 
+@app.route('/plan')
+def showScheme():
+    keyword = get_args('keyword')
+    page_num = get_args('page')
+
+    schemeArray = []
+    scheme_list = []
+
+    for i in range(0, len(schemeArray)):
+        if pageManage(pageNum=page_num, index=i, info_count=10):
+            scheme = schemeArray[i]
+            dic = {
+                'id': scheme.id,
+                'name': scheme.name,
+                'area': scheme.area,
+                'lv': scheme.event_level,
+                'create_person': '',
+                'create_time': '',
+                'status': '未启用'
+            }
+            scheme_list.append(dic)
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
+        'data': scheme_list
+    }
+    return outputData
+
 
 @app.route('/create_plan')
 def createScheme():

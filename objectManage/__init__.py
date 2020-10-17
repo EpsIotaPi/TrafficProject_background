@@ -36,7 +36,8 @@ class Incident:
         self.entity = entity
 
 class Scheme:
-    def __init__(self, name:str, area:str, start_time:Time, end_time:Time, event_level:str, priority:str, description = ''):
+    def __init__(self, name:str, area:str, start_time:Time, end_time:Time, event_level:str, priority:str, description = '', id = 0):
+        self.id = id
         self.name = name
         self.area = area
         self.start_time = start_time.outputStr()
