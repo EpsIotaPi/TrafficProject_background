@@ -42,8 +42,12 @@ def sysMenu():
 def eventProcess():
     keyword = request.args.get('keyword')
     incident_type = request.args.get('type')
-    page_num = request.args.get('pages')
-    status = int(request.args.get('status'))
+    if keyword == None:
+        keyword = ''
+    if incident_type == None:
+        incident_type = ''
+    page_num = int(request.args.get('page'))
+    status = request.args.get('status')
 
     dataArray = FindData_for_eventProcess(keyword, incident_type, status)
 
@@ -63,12 +67,12 @@ def eventProcess():
                 "duration": pastTime.toNow(),
                 "label": dataArray[i].entity.label,
                 "point": dataArray[i].position,
-                "cintent": dataArray[i].entity.content
+                "content": dataArray[i].content
             }
             resultData.append(obj)
 
     outputData = {
-        'code': '1',
+        'code': 1,
         'message': '调用成功',
         'data': resultData
     }
@@ -76,11 +80,7 @@ def eventProcess():
     return jsonify(outputData)
 
 
-
-
-
-
-@app.route('route_recommend')
+@app.route('/route_recommend')
 def routeRecommend():
     incidentID_get = request.args.getlist("incident_id[]")
     pos_id = []
@@ -119,7 +119,7 @@ def routeRecommend():
                 'car_num': path.carNum,
                 'rescue_time': path.time,
                 'rescue_distance': path.distance,
-                'congestion_rate': plan.calCongestionRate()
+                'congestion_rate': path.calCongestionRate()
             }
             incidentArray.append(incident_dic)
 
@@ -266,49 +266,6 @@ def routeRecommend():
 #
 #     return jsonify(outputData)
 #
-#
-# # 事件分析——Incidents
-# @app.route('/events')
-# def events():
-#     pageNum =  request.args.get("page_num")
-#     keyword = request.args.get("keyword")
-#     type = request.args.get("type")
-#     if keyword == None:
-#         keyword = ''
-#     if type == None:
-#         type = ''
-#
-#     events = FindData_from_Incidents(keyword, type)
-#
-#
-#     incidentArray = []
-#     index = 0
-#     for i in events:
-#         dict = {
-#             'name': i.groupName,
-#             'content': i.content,
-#             'type': i.type,
-#             'status': i.status,
-#             'updateTime': i.updateTime,
-#             'entity_info':{
-#                 'time': i.time,
-#                 'highway_name': i.highway_name,
-#                 'highway_numbre': i.highway_number,
-#                 'road_section': i.roadsection,
-#                 'direction': i.direction,
-#                 'distance': i.distance,
-#                 'p_id':i.position
-#             }
-#         }
-#         if pageManage(pageNum=int(pageNum), index=index, info_count=10):
-#             incidentArray.append(dict)
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': incidentArray
-#     }
-#     return jsonify(outputData)
 #
 #
 # # 实时地图

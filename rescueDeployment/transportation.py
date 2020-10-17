@@ -32,7 +32,7 @@ def description_scheme(res,route_matrix,distance_matrix,time_matrix):
     node_data = sheet5.values
     node_data = delete(node_data, [0], axis=1)
     node_list =[]
-    for i in range(45):
+    for i in range(1, 46):
         node = Node(i)
         node_list.append(node)
     res = np.array(res) # 派遣方案矩阵

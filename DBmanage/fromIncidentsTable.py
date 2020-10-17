@@ -4,13 +4,13 @@ from DBmanage import accessDatabase
 
 
 
-def Find_position(id: int) -> (int,str):
+def Find_position(id: int) -> (int, str):
     """
 
     :param id:
     :return: 第一项是position，第二项是serial_number
     """
-    sqlStatement = "select position, serial_number from Incidents where id=%d" % id
+    sqlStatement = "select position, serial_number from Incidents where incident_id=%d" % id
 
     gripData = accessDatabase(sqlStatement)
 

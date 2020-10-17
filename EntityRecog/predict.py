@@ -12,7 +12,9 @@ sess = tf.Session()
 model.saver.restore(sess, ckpt.model_checkpoint_path)
 
 def predict(text):
-
+    POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output = [], [], [], [], [], [], [], ''
+    if text == '':
+        return POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output
     demo_sent = text
 
     path = hp.vocab_dir
@@ -37,9 +39,7 @@ def predict(text):
     predict = decode(logits, length, trans)
     classify_output = int(classify_outputs)
     class_output = get_class(classify_output)
-    # print(class_output)
     POS, DIR, TIME, DIS, RSCT, HWN, HWNB = get_entity(demo_sent.strip(), predict[0], hp.label_map)
-    # print("位置: {}\n方向: {}\n时间: {}\n距离: {}\n路段: {}\n高速名称: {}\n高速编号: {}".format(POS, DIR, TIME, DIS, RSCT, HWN, HWNB))
 
     return  POS, DIR, TIME, DIS, RSCT, HWN, HWNB, class_output
 

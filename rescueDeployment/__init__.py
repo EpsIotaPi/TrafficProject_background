@@ -13,13 +13,13 @@ class coordinate:
 # 节点类
 class Node:
     def __init__(self, id):
-        sqlStatement = "select * from Points where p_id = " + id
+        sqlStatement = "select * from Points where p_id = %d" % id
         gripdata = accessDatabase(sqlStatement)
         for i in gripdata:
-            self.id = int(gripdata[0])
-            self.name = gripdata[1]
-            self.coordinate = coordinate(float(gripdata[2]), float(gripdata[3]))
-            self.traffic_rate = float(gripdata[5])
+            self.id = int(i[0])
+            self.name = i[1]
+            self.coordinate = coordinate(float(i[2]), float(i[3]))
+            self.traffic_rate = float(i[5])
 
 
 # 路径类
@@ -51,8 +51,9 @@ class Path:
         for node_index in route_index:
             self.route_node.append(Node_list[node_index])  # 路径节点列表
 
-        self.start_id = route_index[0]
-        self.end_id = route_index[len(route_index) - 1]
+        self.start_id = route_index[0] + 1
+        self.end_id = route_index[len(route_index) - 1] + 1
+
 
     def calCongestionRate(self) -> int:
         """
@@ -63,7 +64,6 @@ class Path:
         for node in self.route_node:
             rate += node.traffic_rate
         return int(rate / len(self.route_node))
-
 
 
 # 方案类
@@ -88,7 +88,6 @@ class Plan:
         self.avg_time = sum_time / len(path_list)
         self.sum_distance = sum_distance
         # 运输问题的目标函数值
-
 
 
 class allPlans:
