@@ -1,7 +1,7 @@
 
 from flask import Flask, request, jsonify
 from flask_cors import *
-from objectManage import *
+
 from DBmanage.eventProcess import FindData_for_eventProcess
 from DBmanage.fromIncidentsTable import *
 from DBmanage.fromListTable import *
@@ -10,7 +10,6 @@ import map
 from rescueDeployment import *
 from rescueDeployment.transportation import rescuePlan_API
 
-# from EntityRecog.predict import predict
 
 # ---------------------------------------------------
 app = Flask(__name__)
@@ -424,6 +423,40 @@ def groups():
         }
     }
     return jsonify(outputData)
+
+
+@app.route('/block')
+def block():
+    nodes = []
+    for i in range(1, 46):
+        nodes.append(Node(id=i))
+    nodes.sort(key=lambda node: node.traffic_rate, reverse=True)
+
+    traffic_Array = [nodes[0], nodes[1]]
+    trafficArray = []
+    for i in traffic_Array:
+        dic = {
+            'bp_name': i.name,
+            'p_id': i.id,
+            'bp_status': i.status,
+            'block_rate': int(i.traffic_rate),
+            'coordinate': {
+                'long': i.coordinate.longitude,
+                'lati': i.coordinate.latitude
+            }
+        }
+        trafficArray.append(dic)
+
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': trafficArray
+    }
+    return jsonify(outputData)
+
+
+
 
 
 if __name__ == '__main__':

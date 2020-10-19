@@ -12,6 +12,7 @@ class coordinate:
 
 # 节点类
 class Node:
+    status = ''
     def __init__(self, id):
         sqlStatement = "select * from Points where p_id = %d" % id
         gripdata = accessDatabase(sqlStatement)
@@ -21,6 +22,17 @@ class Node:
             self.coordinate = coordinate(float(i[2]), float(i[3]))
             self.traffic_rate = float(i[5])
 
+    def calStatus(self):
+        if self.traffic_rate < 10:
+            self.status = '畅通'
+        elif self.traffic_rate < 30:
+            self.status = '轻度拥堵'
+        elif self.traffic_rate < 70:
+            self.status = '中度拥堵'
+        elif self.traffic_rate < 95:
+            self.status = '重度拥堵'
+        else:
+            self.status = '极度拥堵'
 
 # 路径类
 class Path:
