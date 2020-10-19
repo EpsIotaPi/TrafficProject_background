@@ -339,10 +339,27 @@ def show_resucePoint():
     }
     return jsonify(outputData)
 
+
 @app.route('/create_rp')
 def createRP():
+    rp_name = get_args('rp_name')
+    admin_depart = get_args('admin_depart')
+    contact_person = get_args('contact_person')
+    contact_number = get_args('contact_number')
+    address = get_args('address')
+    ability = get_args('ability')
+    medical_depart = get_args('medical_depart')
+    fire_depart = get_args('fire_depart')
 
-    return
+    newRP = RescuePoint(rp_name=rp_name, admin_depart=admin_depart, contact_person=contact_person, contact_number=contact_number,
+                        address=address, ability=ability, medical_depart=medical_depart,fire_depart=fire_depart)
+    newRP.storge2DB()
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
+    }
+    return jsonify(outputData)
 
 
 

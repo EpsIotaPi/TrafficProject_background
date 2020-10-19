@@ -56,7 +56,7 @@ class Scheme:
 
 
 class RescuePoint:
-    def __init__(self, id:int, rp_name:str, admin_depart, contact_person, contact_number, ability, medical_depart, fire_depart, address):
+    def __init__(self, rp_name:str, admin_depart, contact_person, contact_number, ability, medical_depart, fire_depart, address, id = 0):
         self.id = id
         self.name = rp_name
         self.admin_depart = admin_depart
@@ -66,3 +66,9 @@ class RescuePoint:
         self.medical_depart = medical_depart
         self.fire_depart = fire_depart
         self.address = address
+
+    def storge2DB(self):
+        sql_begin = "Insert Into RescuePoints (rp_name, admin_depart, contact_person, contact_number, ability, medical_depart, fire_depart, address) Values ("
+        tup = (self.name, self.admin_depart, self.contact_person, self.contact_number, self.ability, self.medical_depart, self.fire_depart, self.address)
+        sql_statement = makeSql(sql_begin, tup, ')')
+        accessDatabase(sql_statement)
