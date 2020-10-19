@@ -32,3 +32,10 @@ def Find_Incidents(status: str) -> [Time]:
         result.append(Time(i[0]))
     return result
 
+def Update_Incidents_Status(id: int):
+    begin_sql = "update Incidents set status = "
+    end_sql = ' where incident_id = %d' % id
+    sqlStatement = makeSql(begin_sql, '已确认', end_sql)
+
+    # print(sqlStatement)
+    accessDatabase(sqlStatement)

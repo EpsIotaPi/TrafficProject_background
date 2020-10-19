@@ -117,6 +117,10 @@ def sysMenu():
 
 @app.route('/event_process')
 def eventProcess():
+    incident_id = int(get_args('incident_id'))
+    if incident_id != 0:
+        Update_Incidents_Status(incident_id)
+
     keyword = get_args('keyword')
     incident_type = get_args('type')
     if keyword == None:
