@@ -244,8 +244,9 @@ def showScheme():
                 'name': scheme.name,
                 'area': scheme.area,
                 'lv': scheme.event_level,
-                'create_person': '',
-                'create_time': '',
+                # TODO: need a create_person
+                'create_person': "张三",
+                'create_time': scheme.create_time.outputStr(),
                 'status': '未启用'
             }
             scheme_list.append(dic)
@@ -262,13 +263,11 @@ def showScheme():
 def createScheme():
     scheme_name = get_args('name')
     scheme_area = get_args('area')
-    start_time = Time(get_args('start_time'))
-    end_time = Time(get_args('end_time'))
     event_level = get_args('event_lv')
     priority = get_args('priority')
     description = get_args('description')
 
-    newScheme = Scheme(scheme_name, scheme_area, start_time, end_time, event_level, priority, description)
+    newScheme = Scheme(scheme_name, scheme_area, event_level, priority, description)
     newScheme.storge2DB()
 
     outputData = {

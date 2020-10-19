@@ -12,9 +12,8 @@ def get_Scheme(keyword: str):
     gripData = accessDatabase(sqlStatement)
     result = []
     for i in gripData:
-        result.append(Scheme(id=i[0], name=i[1], area=i[2],
-                             start_time=Time(i[3]), end_time=Time(i[4]),
-                             event_level=i[5], priority=i[6], description=i[7]))
+        result.append(Scheme(id=i[0], name=i[1], area=i[2], create_time=Time(i[3]),
+                             event_level=i[4], priority=i[5], description=i[6]))
 
     return result
 
