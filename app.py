@@ -4,6 +4,7 @@ from flask_cors import *
 from objectManage import *
 from DBmanage.eventProcess import FindData_for_eventProcess
 from DBmanage.fromIncidentsTable import *
+from DBmanage.fromListTable import *
 import map
 
 from rescueDeployment import *
@@ -230,9 +231,9 @@ def routeRecommend():
 @app.route('/plan')
 def showScheme():
     keyword = get_args('keyword')
-    page_num = get_args('page')
+    page_num = int(get_args('page'))
 
-    schemeArray = []
+    schemeArray = get_Scheme(keyword)
     scheme_list = []
 
     for i in range(0, len(schemeArray)):
@@ -277,201 +278,73 @@ def createScheme():
     return jsonify(outputData)
 
 
+@app.route('/highway')
+def showHighway():
+    keyword = get_args('keyword')
+    page_num = get_args('page_num')
 
-# # old version
-# # 群聊管理——ChatMonitor
-# @app.route('/groups')
-# def groups():
-#     pageNum = request.args.get('page_number')
-#     keyword = request.args.get("keyword")
-#     status = request.args.get("status")
-#     if keyword == None:
-#         keyword = ''
-#     if status == None:
-#         status = ''
-#
-#     groups = FindData_from_ChatMonitor(keyword=keyword, status=status)
-#
-#     groupArray = []
-#     index = 0
-#     for i in groups:
-#         dict = {
-#             'name': i.name,
-#             'Introduction': i.Introduction,
-#             'owner': i.owner,
-#             'time': i.time,
-#             'status': i.status,
-#             'rate': int(i.entity_num / i.chat_num * 100)
-#         }
-#         if pageManage(pageNum=int(pageNum), index=index,info_count=10):
-#             groupArray.append(dict)
-#         index += 1
-#
-#     allGroup = FindData_from_ChatMonitor(keyword='', status='')
-#
-#     allEntity = 0
-#     allGroupNum = 0
-#     for i in allGroup:
-#         allGroupNum += 1
-#         allEntity += i.entity_num
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': {
-#             'group_num': allGroupNum,
-#             'time': calTimes(),
-#             'events_num': allEntity,
-#             'group_info': groupArray
-#         }
-#     }
-#     return jsonify(outputData)
-#
-#
-# #在线录入
-# @app.route('/add_new')
-# def add_new():
-#     message = request.args.get("context")
-#     if message == None:
-#         message = ''
-#
-#     Incident = entity_info(message)
-#
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': {
-#             'Incident_time': Incident.time,
-#             'Incident_type': Incident.type_info,
-#             'highway_name': Incident.highway_name,
-#             'highway_num': Incident.highway_number,
-#             'highway_direction': Incident.direction,
-#             'rode_section': Incident.road_section,
-#             'distance': Incident.distance
-#         }
-#     }
-#
-#     return jsonify(outputData)
-#
-#
-# # 救援点配置——RescuePoints
-# @app.route('/rescue_config')
-# def rescue_config():
-#     keyword = request.args.get("keyword")
-#     pageNum = request.args.get("page_num")
-#     if keyword == None:
-#         keyword = ''
-#
-#     rescuePoints = FindData_from_RescuePoints(keyword)
-#
-#     rp_Array = []
-#     index = 0
-#     for i in rescuePoints:
-#         dict = {
-#             'rp_name': i.name,
-#             'rp_property':{
-#                 'TrafficPolice': i.property.TrafficPolice,
-#                 'RoadAdministration': i.property.RoadAdministration,
-#                 'small_ObstacleRemoval': i.property.small_ObstacleRemoval,
-#                 'large_ObstacleRemoval': i.property.large_ObstacleRemoval,
-#                 'Crane': i.property.Crane,
-#                 'BackTruck': i.property.BackTruck,
-#                 'PickupTruck': i.property.PickupTruck,
-#                 'FireEngine': i.property.FireEngine,
-#                 'Ambulance': i.property.Ambulance
-#             }
-#         }
-#         if pageManage(pageNum=int(pageNum), index=index, info_count=10):
-#             rp_Array.append(dict)
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': {
-#             'rp_num': len(rp_Array),
-#             'rescuePoint': rp_Array
-#         }
-#     }
-#
-#     return jsonify(outputData)
-#
-#
-#
-# # 实时地图
-# @app.route('/map')
-# def map():
-#     num = int(request.args.get('need_num'))
-#     choosePoints = selectRandomAccidentPoints(num)
-#     accidentPointsArray = []
-#     for i in choosePoints:
-#         dict = {
-#             "name": i.name,
-#             "incident_num": countIncidents(i),
-#             "entity_info": {
-#                 "p_id": i.id
-#             },
-#             "coordinate": {
-#                 "long": i.position.longitude,
-#                 "lati": i.position.latitude
-#             }
-#         }
-#         accidentPointsArray.append(dict)
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': {
-#             'accidentPoints': accidentPointsArray
-#         }
-#     }
-#     return jsonify(outputData)
-#
-#
-# # 事故救援——Points
-# @app.route('/rescue')
-# def rescue():
-#     pid_get = request.args.getlist("idList[]")
-#     p_id = []
-#     for i in pid_get:
-#         p_id.append(int(i))
-#     Plans = make_rescuePlan(np.array(p_id))
-#
-#     incidentArray = []
-#     for i in Plans:
-#         routeArray = []
-#         for p in i.route.points:
-#             point = {
-#                 'point_id': p.id,
-#                 'point_name': p.name,
-#                 'coordinate': {
-#                     'long':p.position.longitude,
-#                     'lati':p.position.latitude
-#                 }
-#             }
-#             routeArray.append(point)
-#         dict = {
-#             'begin': i.route.begin.id,
-#             'end': i.route.end.id,
-#             'time': i.time,
-#             'distance': i.distance,
-#             'vehicle_count': i.vehicle_count,
-#             'route': routeArray,
-#             'isFast': i.isFast
-#         }
-#         incidentArray.append(dict)
-#
-#     outputData = {
-#         'code': 1,
-#         'message': '调用成功',
-#         'data': {
-#             'incident': incidentArray
-#         }
-#     }
-#     return jsonify(outputData)
+    schemeArray = []
+    scheme_list = []
+
+    for i in range(0, len(schemeArray)):
+        if pageManage(pageNum=page_num, index=i, info_count=10):
+            scheme = schemeArray[i]
+            dic = {
+                'id': scheme.id,
+                'name': scheme.name,
+                'area': scheme.area,
+                'lv': scheme.event_level,
+                'create_person': '',
+                'create_time': '',
+                'status': '未启用'
+            }
+            scheme_list.append(dic)
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
+        'data': scheme_list
+    }
+    return jsonify(outputData)
+
+
+@app.route('/rescue_point')
+def show_resucePoint():
+    keyword = get_args('keyword')
+    page_num = int(get_args('page_num'))
+
+    rpArray = get_rescuePoint(keyword)
+    rp_list = []
+
+    for i in range(0, len(rpArray)):
+        if pageManage(pageNum=page_num, index=i, info_count=10):
+            rp = rpArray[i]
+            dic = {
+                'id': rp.id,
+                'rp_name': rp.name,
+                'admin_depart': rp.admin_depart,
+                'contact_person': rp.contact_person,
+                'contact_number': rp.contact_number,
+                'ability': rp.ability,
+                'medical_depart': rp.medical_depart,
+                'fire_depart': rp.fire_depart,
+                'address': rp.address
+            }
+            rp_list.append(dic)
+
+    outputData = {
+        'code': 1,
+        'message': "调用成功",
+        'data': rp_list
+    }
+    return jsonify(outputData)
+
+@app.route('/create_rp')
+def createRP():
+
+    return
 
 
 
 if __name__ == '__main__':
-
     app.run()

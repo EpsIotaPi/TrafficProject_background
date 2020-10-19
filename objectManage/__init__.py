@@ -52,3 +52,17 @@ class Scheme:
         sql_statement = makeSql(sql_begin, tup, ')')
         accessDatabase(sql_statement)
 
+# class Highway:
+
+
+class RescuePoint:
+    def __init__(self, id:int, rp_name:str, admin_depart, contact_person, contact_number, ability, medical_depart, fire_depart, address):
+        self.id = id
+        self.name = rp_name
+        self.admin_depart = admin_depart
+        self.contact_person = contact_person
+        self.contact_number = contact_number
+        self.ability = ability
+        self.medical_depart = medical_depart
+        self.fire_depart = fire_depart
+        self.address = address
