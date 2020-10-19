@@ -200,7 +200,7 @@ def routeRecommend():
                 'incident_serial': path.serial_number,
                 'car_num': path.carNum,
                 'rescue_time': int(path.time * 60),
-                'rescue_distance': path.distance,
+                'rescue_distance': int(path.distance),
                 'congestion_rate': path.calCongestionRate()
             }
             incidentArray.append(incident_dic)
@@ -208,7 +208,7 @@ def routeRecommend():
         rescuePlan_dic = {
             'incidents': incidentArray,
             'joint_time': int(plan.sum_time * 60),
-            'joint_distance': plan.sum_distance,
+            'joint_distance': int(plan.sum_distance),
             'compare_average_time': plan.compare_avgTime,
             'compare_average_distance': plan.compare_avgDis,
             'is_fast': plan.is_fast,
@@ -222,7 +222,7 @@ def routeRecommend():
         'data': {
             'rescuePlans': rescuePlansArray,
             'average_time': int(rescuePlans.avgTime * 60),
-            'average_distance': rescuePlans.avgDis,
+            'average_distance': int(rescuePlans.avgDis),
             'rescue_incidents': serial
         }
     }
@@ -360,6 +360,70 @@ def createRP():
     }
     return jsonify(outputData)
 
+
+@app.route('/groups')
+def groups():
+    pageNum = get_args('page_number')
+    keyword = get_args("keyword")
+    status = get_args("status")
+
+
+    groups = get_groups(keyword=keyword, status=status)
+
+    groupArray = []
+    index = 0
+    for i in groups:
+        dict = {
+            'name': i.name,
+            'source': i.source,
+            'owner': i.owner,
+            'time': i.time,
+            'status': i.status,
+            'rate': int(i.entity_num / i.chat_num * 100)
+        }
+        if pageManage(pageNum=int(pageNum), index=index,info_count=10):
+            groupArray.append(dict)
+        index += 1
+
+    allGroup = get_groups(keyword='', status='')
+
+    allEntity = 0
+    allGroupNum = 0
+    for i in allGroup:
+        allGroupNum += 1
+        allEntity += i.entity_num
+
+    wx_base, wx_fixed = Find_source("微信群聊")
+    zhu_base, zhu_fixed = Find_source("智慧云平台")
+    text_base, text_fixed = Find_source("在线录入")
+
+    outputData = {
+        'code': 1,
+        'message': '调用成功',
+        'data': {
+            'group_num': allGroupNum,
+            'events_num': allEntity,
+            'group_info': groupArray,
+            'base_data': {
+                'WX': {
+                    'base': wx_base,
+                    'fixed': wx_fixed,
+                    'rate': int(wx_fixed * 100 / wx_base),
+                },
+                'ZHU': {
+                    'base': zhu_base,
+                    'fixed': zhu_fixed,
+                    'rate': int(zhu_fixed * 100 / zhu_base),
+                },
+                'TEXT': {
+                    'base': text_base,
+                    'fixed': text_fixed,
+                    'rate': int(text_fixed * 100 / text_base),
+                }
+            }
+        }
+    }
+    return jsonify(outputData)
 
 
 if __name__ == '__main__':

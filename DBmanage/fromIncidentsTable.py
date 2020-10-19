@@ -32,6 +32,20 @@ def Find_Incidents(status: str) -> [Time]:
         result.append(Time(i[0]))
     return result
 
+def Find_source(source: str) -> [Time]:
+    sqlStatement = "select status from Incidents where source = "
+    sqlStatement = makeSql(sqlStatement, source, "")
+    gripData = accessDatabase(sqlStatement)
+    fixed = base = 0
+    for i in gripData:
+        if i[0] == '已完成':
+            fixed += 1
+        base += 1
+
+    return base, fixed
+
+
+
 def Update_Incidents_Status(id: int):
     begin_sql = "update Incidents set status = "
     end_sql = ' where incident_id = %d' % id

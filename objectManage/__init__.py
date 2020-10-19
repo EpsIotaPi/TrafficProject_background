@@ -71,3 +71,14 @@ class RescuePoint:
         tup = (self.name, self.admin_depart, self.contact_person, self.contact_number, self.ability, self.medical_depart, self.fire_depart, self.address)
         sql_statement = makeSql(sql_begin, tup, ')')
         accessDatabase(sql_statement)
+
+class Group:
+    def __init__(self, id: int, name:str, source: str, owner: str, time: str, status: str, entity_num:int, chat_num:int):
+        self.id = id
+        self.name = name
+        self.source = source
+        self.owner = owner
+        self.time = time
+        self.status = status
+        self.entity_num = entity_num
+        self.chat_num = chat_num

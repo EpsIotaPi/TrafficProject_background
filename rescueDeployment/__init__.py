@@ -109,8 +109,8 @@ class allPlans:
                 fastest = i
             if self.plan_list[i].sum_distance < self.plan_list[shortest].sum_distance:
                 shortest = i
-            self.plan_list[i].compare_avgTime = int((self.plan_list[i].sum_time - self.avgTime) / self.avgTime)
-            self.plan_list[i].compare_avgDis = int((self.plan_list[i].sum_distance - self.avgDis) / self.avgDis)
+            self.plan_list[i].compare_avgTime = int((self.plan_list[i].sum_time - self.avgTime) * 100 / self.avgTime)
+            self.plan_list[i].compare_avgDis = int((self.plan_list[i].sum_distance - self.avgDis) * 100 / self.avgDis)
         self.plan_list[fastest].is_fast = True
         self.plan_list[shortest].is_short = True
 

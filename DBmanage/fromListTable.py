@@ -35,3 +35,28 @@ def get_rescuePoint(keyword: str) -> [RescuePoint]:
                                   ability=i[5], medical_depart=i[6], fire_depart=i[7], address=i[8]))
 
     return result
+
+
+def get_groups(keyword:str, status:str) -> [Group]:
+    # make sql statement
+    sqlStatement = "select * from groups"
+    if keyword != '' or status != '':
+        sqlStatement += ' where '
+    if keyword != '':
+        sqlStatement += "group_Name Like \'%" + keyword + "%\'"
+        if status != '':
+            sqlStatement += " and "
+    if status != '':
+        sqlStatement += "moni_Status=\'%s\'" % status
+
+
+    # execute sql statement
+    gripData = accessDatabase(sqlStatement)
+
+    # output data
+    result = []
+    for i in gripData:
+        result.append(Group(id=i[0], name=i[1], source=i[2],
+                            owner=i[3], time=i[4], status=i[5],
+                            entity_num=i[6], chat_num=i[7]))
+    return result
