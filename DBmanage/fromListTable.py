@@ -19,7 +19,19 @@ def get_Scheme(keyword: str):
 
 
 def get_highway(keyword: str):
-    return
+    sqlStatement = "select * from highways"
+    if keyword != '':
+        sqlStatement += " where name like \"%" + keyword + "%\""
+
+    print(sqlStatement)
+    gripData = accessDatabase(sqlStatement)
+    result = []
+    for i in gripData:
+        result.append(Highway(id=i[0], name=i[1], entrance=i[2], bridge_tunnel=i[3],
+                              manage_office=i[4], stake=i[5], block=i[6], accident=i[7],
+                              rescue_point=i[8], engin=i[9], speed_limit=i[10], weather=i[11]))
+
+    return result
 
 
 def get_rescuePoint(keyword: str) -> [RescuePoint]:

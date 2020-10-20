@@ -51,8 +51,21 @@ class Scheme:
         sql_statement = makeSql(sql_begin, tup, ')')
         accessDatabase(sql_statement)
 
-# class Highway:
-
+class Highway:
+    def __init__(self, id:int, name:str, entrance:str, bridge_tunnel:str,
+                 manage_office:str, stake:str, block, accident, engin, speed_limit, rescue_point, weather):
+        self.id = id
+        self.name = name
+        self.entrance = entrance,
+        self.bridge_tunnel = bridge_tunnel,
+        self.manage_office = manage_office,
+        self.stake = stake,
+        self.block = block
+        self.accident = accident
+        self.engin = engin
+        self.speed = speed_limit
+        self.rescue_point = rescue_point
+        self.weather = weather
 
 class RescuePoint:
     def __init__(self, rp_name:str, admin_depart, contact_person, contact_number, ability, medical_depart, fire_depart, address, id = 0):

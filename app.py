@@ -127,7 +127,7 @@ def eventProcess():
         keyword = ''
     if incident_type == None:
         incident_type = ''
-    page_num = int(request.args.get('page'))
+    page_num = int(request.args.get('page_num'))
     status = request.args.get('status')
 
     dataArray = FindData_for_eventProcess(keyword, incident_type, status)
@@ -280,29 +280,34 @@ def createScheme():
 @app.route('/highway')
 def showHighway():
     keyword = get_args('keyword')
-    page_num = get_args('page_num')
+    page_num = int(get_args('page_num'))
 
-    schemeArray = []
-    scheme_list = []
+    highwayArray = get_highway(keyword)
+    high_list = []
 
-    for i in range(0, len(schemeArray)):
+    for i in range(0, len(highwayArray)):
         if pageManage(pageNum=page_num, index=i, info_count=10):
-            scheme = schemeArray[i]
+            highway = highwayArray[i]
             dic = {
-                'id': scheme.id,
-                'name': scheme.name,
-                'area': scheme.area,
-                'lv': scheme.event_level,
-                'create_person': '',
-                'create_time': '',
-                'status': '未启用'
+                'id': highway.id,
+                'hw_name': highway.name,
+                'entrance': highway.entrance,
+                'bridge_tunnel': highway.bridge_tunnel,
+                'manage_office': highway.manage_office,
+                'stake_num': highway.stake,
+                'blocking_point': highway.block,
+                'accident_point': highway.accident,
+                'engin_point': highway.engin,
+                'speed_limit': highway.speed,
+                'rescue_point': highway.rescue_point,
+                'weather':highway.weather
             }
-            scheme_list.append(dic)
+            high_list.append(dic)
 
     outputData = {
         'code': 1,
         'message': "调用成功",
-        'data': scheme_list
+        'data': high_list
     }
     return jsonify(outputData)
 
