@@ -147,6 +147,7 @@ def eventProcess():
                 "time": dataArray[i].entity.times,
                 "duration": pastTime.toNow(),
                 "label": dataArray[i].entity.label,
+                "position": dataArray[i].entity.position,
                 "point": dataArray[i].position,
                 "content": dataArray[i].content
             }
@@ -163,7 +164,7 @@ def eventProcess():
 
 @app.route('/route_recommend')
 def routeRecommend():
-    incidentID_get = request.args.getlist("incident_id")
+    incidentID_get = request.args.getlist("incident_id[]")
     pos_id = []
     serial = []
     for i in incidentID_get:
@@ -435,6 +436,7 @@ def block():
     traffic_Array = [nodes[0], nodes[1]]
     trafficArray = []
     for i in traffic_Array:
+        i.calStatus()
         dic = {
             'bp_name': i.name,
             'p_id': i.id,
