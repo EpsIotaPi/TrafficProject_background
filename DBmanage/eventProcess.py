@@ -15,7 +15,6 @@ def FindData_for_eventProcess(keyword = '', type = '', status = '已完成') -> 
     if type != '':
         sqlStatement += " and \"entity-label\" = \"%s\"" % type
 
-    print(sqlStatement)
 
     gripData = accessDatabase(sqlStatement)
 

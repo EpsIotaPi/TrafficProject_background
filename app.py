@@ -43,7 +43,6 @@ def sysMenu():
     unchecked = Find_Incidents('待确认')
 
     for i in finished:
-        print(i.calInterval())
         if i.calInterval()[0]:
             rDay += 1
             iDay += 1
@@ -127,7 +126,7 @@ def eventProcess():
         keyword = ''
     if incident_type == None:
         incident_type = ''
-    page_num = int(request.args.get('page_num'))
+    page_num = int(request.args.get('page'))
     status = request.args.get('status')
 
     dataArray = FindData_for_eventProcess(keyword, incident_type, status)
@@ -162,6 +161,7 @@ def eventProcess():
     return jsonify(outputData)
 
 
+oldPlan = None
 @app.route('/route_recommend')
 def routeRecommend():
     incidentID_get = request.args.getlist("incident_id[]")
@@ -172,13 +172,20 @@ def routeRecommend():
         pos_id.append(Pos)
         serial.append(Ser)
 
-    rescuePlans = allPlans(rescuePlan_API(pos_id))
+    global oldPlan
+    rescuePlans = oldPlan
+    if rescuePlans == None:
+        rescuePlans = allPlans(rescuePlan_API(pos_id))
+        oldPlan = rescuePlans
+    print(oldPlan)
     rescuePlans.self_compare()
     rescuePlans.giveSerial(pos_id, serial)
 
     map.clear()
+    print(pos_id)
     for id in pos_id:
         map.randomTraffic(id, 100)
+        map.clean()
     map.uniform(len(pos_id))
 
 
@@ -228,6 +235,7 @@ def routeRecommend():
     }
     return jsonify(outputData)
 
+
 @app.route('/plan')
 def showScheme():
     keyword = get_args('keyword')
@@ -243,11 +251,10 @@ def showScheme():
                 'id': scheme.id,
                 'name': scheme.name,
                 'area': scheme.area,
-                'lv': scheme.event_level,
-                # TODO: need a create_person
-                'create_person': "张三",
+                'lv': scheme.priority,
+                'create_person': scheme.person,
                 'create_time': scheme.create_time.outputStr(),
-                'status': '未启用'
+                'status': scheme.status
             }
             scheme_list.append(dic)
 
@@ -263,11 +270,12 @@ def showScheme():
 def createScheme():
     scheme_name = get_args('name')
     scheme_area = get_args('area')
-    event_level = get_args('event_lv')
     priority = get_args('priority')
-    description = get_args('description')
+    status = get_args('status')
+    user = get_args('user_name')
+    user = "超级管理员"
 
-    newScheme = Scheme(scheme_name, scheme_area, event_level, priority, description)
+    newScheme = Scheme(scheme_name, scheme_area, user, priority, status)
     newScheme.storge2DB()
 
     outputData = {

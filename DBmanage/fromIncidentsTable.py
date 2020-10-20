@@ -51,5 +51,4 @@ def Update_Incidents_Status(id: int):
     end_sql = ' where incident_id = %d' % id
     sqlStatement = makeSql(begin_sql, '已确认', end_sql)
 
-    # print(sqlStatement)
     accessDatabase(sqlStatement)

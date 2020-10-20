@@ -8,12 +8,11 @@ def get_Scheme(keyword: str):
     if keyword != '':
         sqlStatement += " where name like \"%" + keyword + "%\""
 
-    print(sqlStatement)
     gripData = accessDatabase(sqlStatement)
     result = []
     for i in gripData:
         result.append(Scheme(id=i[0], name=i[1], area=i[2], create_time=Time(i[3]),
-                             event_level=i[4], priority=i[5], description=i[6]))
+                             person=i[4], priority=i[5], status=i[6]))
 
     return result
 
@@ -37,7 +36,7 @@ def get_highway(keyword: str):
 def get_rescuePoint(keyword: str) -> [RescuePoint]:
     sqlStatement = "select * from RescuePoints"
     if keyword != '':
-        sqlStatement += " where name like \"%" + keyword + "%\""
+        sqlStatement += " where rp_name like \"%" + keyword + "%\""
 
     gripData = accessDatabase(sqlStatement)
     result = []

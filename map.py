@@ -61,13 +61,10 @@ def randomTraffic(IncidentPoints: int, rate: int):
      visited[pos] = 1
      sqlStatement = "SELECT traffic_rate from Points where p_id = %d" % (IncidentPoints)
      data = accessDatabase(sqlStatement)
-     old_rate = 0
-     for i in data:
-          old_rate = i[0]
+     old_rate = data[0][0]
 
 # 增加车流量
      rate *= (1 - random.exponential(scale=0.1, size=1000).std())
-
      sqlStatement = "UPDATE Points SET traffic_rate = %f" % (rate + old_rate)
      sqlStatement += " where p_id = %d" % (IncidentPoints)
      accessDatabase(sqlStatement)
@@ -83,14 +80,17 @@ def randomTraffic(IncidentPoints: int, rate: int):
 
 
 def uniform(times: int):
-
      sqlStatement = "UPDATE Points SET traffic_rate = traffic_rate/%d" % times
      accessDatabase(sqlStatement)
 
-     return
+
+def clean():
+     global visited
+     visited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 
 def clear():
-     visited = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+     clean()
      sqlStatement = "UPDATE Points SET traffic_rate = 0"
      accessDatabase(sqlStatement)
 

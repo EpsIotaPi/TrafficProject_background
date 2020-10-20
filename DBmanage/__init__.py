@@ -30,10 +30,11 @@ def accessDatabase(sqlStatement:str):
 
 def makeSql(first_text: str, params: tuple, last_text:str) -> str:
     result = first_text
+
     if type(params) == tuple:
-        for i in params:
-            result += "\"" + str(i) + "\""
-            if i != params[len(params) - 1]:
+        for i in range(0, len(params)):
+            result += "\"" + str(params[i]) + "\""
+            if i != len(params) - 1:
                 result += ", "
     else:
         result += "\"" + str(params) + "\""

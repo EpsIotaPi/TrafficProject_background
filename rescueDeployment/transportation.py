@@ -142,7 +142,7 @@ def get_input_2(accident_index,costs_real):
     # 生成其他派遣方案
     res_list =[]
     Obj_value_list = []
-    for i in range(100): # 把costs矩阵打乱成假的costs矩阵，再用运输问题优化函数，得到假的costs矩阵下的最优派遣方案
+    for i in range(30): # 把costs矩阵打乱成假的costs矩阵，再用运输问题优化函数，得到假的costs矩阵下的最优派遣方案
         cost_ori = cost_ori.T
         for j in range(3): # 打乱costs矩阵
             np.random.shuffle(cost_ori)
@@ -155,7 +155,7 @@ def get_input_2(accident_index,costs_real):
     # 选 运输问题目标函数值 最好的两个
     index_best = 0
     index_best_last = 0
-    for i in range(100):
+    for i in range(30):
         if Obj_value_list[i] > Obj_value_list[index_best]:
             index_best_last = index_best
             index_best = i

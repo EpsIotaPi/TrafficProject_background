@@ -36,19 +36,20 @@ class Incident:
         self.entity = entity
 
 class Scheme:
-    def __init__(self, name:str, area:str, event_level:str, priority:str, description = '', id = 0, create_time = Time(text="2020-10-19 20:30:40")):
+    def __init__(self, name:str, area:str, person:str, priority:str, status = '', id = 0, create_time = Time(text="2020-10-19 20:30:40")):
         self.id = id
         self.create_time = create_time
         self.name = name
         self.area = area
-        self.event_level = event_level
+        self.person = person
         self.priority = priority
-        self.description =  description
+        self.status =  status
 
     def storge2DB(self):
-        sql_begin = "Insert Into Schemes (name, area, event_level, priority, description) Values ("
-        tup = (self.name, self.area, self.event_level, self.priority, self.description)
+        sql_begin = "Insert Into Schemes (name, area, create_person, priority, status) Values ("
+        tup = (self.name, self.area, self.person, self.priority, self.status)
         sql_statement = makeSql(sql_begin, tup, ')')
+        print(sql_statement)
         accessDatabase(sql_statement)
 
 class Highway:
