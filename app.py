@@ -450,11 +450,18 @@ def block():
     trafficArray = []
     for i in traffic_Array:
         i.calStatus()
+        block = int(i.traffic_rate)
+        slow = int(np.random.uniform(0, 100 - block))
+        expedite = int(np.random.uniform(0, 100 - slow -block))
+        unkown = 100 - block - slow - expedite
         dic = {
             'bp_name': i.name,
             'p_id': i.id,
             'bp_status': i.status,
-            'block_rate': int(i.traffic_rate),
+            'block_rate': block,
+            'slow_rate': slow,
+            'expedite_rate': expedite,
+            'unkown_rate': unkown,
             'coordinate': {
                 'long': i.coordinate.longitude,
                 'lati': i.coordinate.latitude

@@ -28,7 +28,7 @@ def accessDatabase(sqlStatement:str):
 
 
 
-def makeSql(first_text: str, params: tuple, last_text:str) -> str:
+def makeSql(first_text: str, params, last_text:str) -> str:
     result = first_text
 
     if type(params) == tuple:
