@@ -144,7 +144,7 @@ def eventProcess():
                 "road_section": dataArray[i].entity.road_section,
                 "direction": dataArray[i].entity.direction,
                 "time": dataArray[i].entity.times,
-                "duration": pastTime.toNow(),
+                "duration": abs(pastTime.toNow()),
                 "label": dataArray[i].entity.label,
                 "position": dataArray[i].entity.position,
                 "point": dataArray[i].position,
@@ -162,25 +162,39 @@ def eventProcess():
 
 
 oldPlan = None
+old_id = []
+isFirst = True
 @app.route('/route_recommend')
 def routeRecommend():
+    global oldPlan, old_id, isFirst
+
+    isCalbefore = (not isFirst)
     incidentID_get = request.args.getlist("incident_id[]")
     pos_id = []
     serial = []
+    index = 0
     for i in incidentID_get:
         Pos, Ser = Find_position(int(i))
         pos_id.append(Pos)
         serial.append(Ser)
+        if isFirst:
+            old_id.append(Pos)
+        elif old_id[index] != pos_id[index]:
+            isCalbefore = False
+        index += 1
+    print(old_id)
+    if isFirst:
+        oldPlan = allPlans(rescuePlan_API((pos_id)))
+        rescuePlans = oldPlan
+    else:
+        if isCalbefore:
+            rescuePlans = oldPlan
+        else:
+            rescuePlans = allPlans(rescuePlan_API((pos_id)))
 
-    global oldPlan
-    rescuePlans = oldPlan
-    if rescuePlans == None:
-        rescuePlans = allPlans(rescuePlan_API(pos_id))
-        oldPlan = rescuePlans
-    print(oldPlan)
     rescuePlans.self_compare()
     rescuePlans.giveSerial(pos_id, serial)
-
+    isFirst = False
     map.clear()
     print(pos_id)
     for id in pos_id:
